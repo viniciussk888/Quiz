@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "705253122085",
+    "firebase_url": "https://whychat-f7ea3.firebaseio.com",
+    "project_id": "whychat-f7ea3",
+    "storage_bucket": "whychat-f7ea3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705253122085:android:7c9faad9534dda61",
+        "android_client_info": {
+          "package_name": "com.example.whychat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705253122085-mvqula9d96jpip9eubb47cl8tlrhck68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXZem69qrq0mubz655QELuEPRD_gHw8tY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705253122085-mvqula9d96jpip9eubb47cl8tlrhck68.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
