@@ -24,6 +24,7 @@ public class MensagensActivity extends AppCompatActivity {
 
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
+
             startActivity(intent);
         }
     }
@@ -38,6 +39,8 @@ public class MensagensActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.contatos:
+                Intent intent = new Intent(MensagensActivity.this,ContatoActivity.class);
+                startActivity(intent);
                 break;
             case  R.id.sair:
                 FirebaseAuth.getInstance().signOut();
