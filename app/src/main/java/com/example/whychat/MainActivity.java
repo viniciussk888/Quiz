@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditSenha;
     private Button mBtnLogin;
     private TextView mTxtcriarConta;
+    private ImageView mLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         mEditSenha = findViewById(R.id.editSenha);
         mBtnLogin = findViewById(R.id.btnCadastrar);
         mTxtcriarConta = findViewById(R.id.txtCriarConta);
+        mLogo = findViewById(R.id.logo);
 
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
