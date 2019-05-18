@@ -8,6 +8,6 @@ public class ComoFuncionaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comofunciona);
+        setContentView(R.layout.activity_como_funciona);
     }
 }

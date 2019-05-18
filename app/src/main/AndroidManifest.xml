@@ -9,10 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ComoFuncionaActivity"></activity>
+        <activity
+            android:name=".ComoFuncionaActivity"
+            android:label="Voltar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MensagensActivity" />
+        </activity>
         <activity
             android:name=".ContatoActivity"
-            android:label="RANK">
+            android:label="Pontuaçoes">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MensagensActivity" />

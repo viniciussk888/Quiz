@@ -5,17 +5,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MensagensActivity extends AppCompatActivity {
+    private Button mBtnComoFun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensagens);
 
+        mBtnComoFun = findViewById(R.id.HowTo);
+
         verificarAutenticacao();
+
+        mBtnComoFun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MensagensActivity.this,ComoFuncionaActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void verificarAutenticacao() {
