@@ -38,9 +38,13 @@ public class MensagensActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.contatos:
+            case R.id.rank:
                 Intent intent = new Intent(MensagensActivity.this,ContatoActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.quizz:
+                Intent intente = new Intent(MensagensActivity.this,MensagensActivity.class);
+                startActivity(intente);
                 break;
             case  R.id.sair:
                 FirebaseAuth.getInstance().signOut();

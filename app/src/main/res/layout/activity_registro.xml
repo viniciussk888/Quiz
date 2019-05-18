@@ -62,7 +62,6 @@
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/bg_botao_redondo"
-        android:backgroundTint="@android:color/holo_green_dark"
         android:text="Cadastrar"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/editSenha"

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-  <item android:id="@+id/contatos"
-      android:title="Contatos "
+  <item
+      android:id="@+id/quizz"
+      android:title="quizz"
+      app:showAsAction="always" />
+  <item
+      android:id="@+id/rank"
+      android:title="Ranking"
+      app:showAsAction="always" />
+  <item android:id="@+id/sair"
+      android:title="Sair"
       app:showAsAction="always"/>
-    <item android:id="@+id/sair"
-        android:title="Sair"
-        app:showAsAction="always"/>
+
 </menu>
