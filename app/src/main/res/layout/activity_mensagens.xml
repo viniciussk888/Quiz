@@ -8,31 +8,14 @@
 
     <ImageView
         android:id="@+id/MinhaFoto"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/logo"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/MeuNome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Joao Cleber"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintStart_toEndOf="@+id/MinhaFoto"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/MeuScore"
@@ -40,16 +23,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="score: 10"
         android:textColor="@android:color/holo_red_dark"
         android:textStyle="italic"
-        android:text="Score: 125"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toEndOf="@+id/MinhaFoto"
         app:layout_constraintTop_toBottomOf="@+id/MeuNome" />
+
+    <TextView
+        android:id="@+id/MeuNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Meu Nome"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/MinhaFoto"
+        app:layout_constraintTop_toTopOf="@+id/MinhaFoto" />
 
     <ImageView
         android:id="@+id/lampadaImgView"

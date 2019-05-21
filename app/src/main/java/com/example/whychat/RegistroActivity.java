@@ -134,8 +134,9 @@ public class RegistroActivity extends AppCompatActivity {
                                 String uid = FirebaseAuth.getInstance().getUid();
                                 String username = mEditnome.getText().toString();
                                 String fotoperfil = uri.toString();
+                                int score = 0;
 
-                               User user =  new User(uid, username, fotoperfil);
+                               User user =  new User(uid, username, fotoperfil, score);//aqui foi mexido
 
                                 FirebaseFirestore.getInstance().collection("users")
                                         .add(user)
