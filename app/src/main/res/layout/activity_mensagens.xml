@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MensagensActivity">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/MinhaFoto"
         android:layout_width="75dp"
         android:layout_height="75dp"
@@ -48,13 +48,13 @@
         android:layout_height="250dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:src="@drawable/lampadasi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MeuScore"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
         tools:srcCompat="@tools:sample/avatars[1]" />
 
     <Button
@@ -80,4 +80,18 @@
         app:layout_constraintEnd_toEndOf="@+id/bntPlay"
         app:layout_constraintStart_toStartOf="@+id/bntPlay"
         app:layout_constraintTop_toBottomOf="@+id/bntPlay" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="395dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MinhaFoto" />
 </android.support.constraint.ConstraintLayout>

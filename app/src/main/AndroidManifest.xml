@@ -25,7 +25,7 @@
         </activity>
         <activity
             android:name=".ContatoActivity"
-            android:label="Scores">
+            android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MensagensActivity" />

@@ -7,7 +7,7 @@
       app:showAsAction="always" />
   <item
       android:id="@+id/rank"
-      android:title="Ranking"
+      android:title="Pontuaçoes"
       app:showAsAction="always" />
   <item android:id="@+id/sair"
       android:title="Sair"

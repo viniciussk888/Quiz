@@ -73,7 +73,9 @@ public class ContatoActivity extends AppCompatActivity {
         public void bind(@NonNull ViewHolder viewHolder, int position) {
             TextView txtUserName = viewHolder.itemView.findViewById(R.id.textView);
             ImageView imgFoto = viewHolder.itemView.findViewById(R.id.imageView);
+            TextView txtScore = viewHolder.itemView.findViewById(R.id.textViewScore);
 
+            txtScore.setText("Score: "+user.getScore());
             txtUserName.setText(user.getUsername());
 
             Picasso.get()
