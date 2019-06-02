@@ -33,6 +33,7 @@ public class EscolherPeriodo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(EscolherPeriodo.this, QuizzActivity.class);
                 intent.putExtra("periodo","1");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -41,6 +42,7 @@ public class EscolherPeriodo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(EscolherPeriodo.this, QuizzActivity.class);
                 intent.putExtra("periodo","2");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -49,6 +51,7 @@ public class EscolherPeriodo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(EscolherPeriodo.this, QuizzActivity.class);
                 intent.putExtra("periodo","3");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -57,6 +60,7 @@ public class EscolherPeriodo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(EscolherPeriodo.this, QuizzActivity.class);
                 intent.putExtra("periodo","4");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -65,6 +69,7 @@ public class EscolherPeriodo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(EscolherPeriodo.this, QuizzActivity.class);
                 intent.putExtra("periodo","5");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -73,6 +78,7 @@ public class EscolherPeriodo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(EscolherPeriodo.this, QuizzActivity.class);
                 intent.putExtra("periodo","6");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -81,6 +87,7 @@ public class EscolherPeriodo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(EscolherPeriodo.this, QuizzActivity.class);
                 intent.putExtra("periodo","7");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });

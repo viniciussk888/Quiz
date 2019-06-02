@@ -230,6 +230,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttonB" />
+
+            <Button
+                android:id="@+id/btnFinalizarQuizz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Finalizar"
+                android:textColor="@color/purpuraLara"
+                android:background="@drawable/bg_botao_periodos"
+                app:layout_constraintEnd_toEndOf="@+id/msgAcerto"
+                app:layout_constraintStart_toStartOf="@+id/msgAcerto"
+                app:layout_constraintTop_toBottomOf="@+id/msgAcerto" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>

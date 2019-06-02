@@ -9,10 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HistoricoActicity"></activity>
+        <activity
+            android:name=".FimQuizzActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".HistoricoActicity" />
         <activity
             android:name=".QuizzActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FimQuizzActivity" />
+        </activity>
         <activity
             android:name=".EscolherPeriodo"
             android:label="Voltar">

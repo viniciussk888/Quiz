@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +26,7 @@ public class QuizzActivity extends AppCompatActivity {
     private Button mButonB;
     private Button mButonC;
     private Button mButonD;
+    private Button mFinalizaQuizz;
     private TextView mtxtPontos;
     private PerguntasRepositorio repositorio = new PerguntasRepositorio();
     private String respostaCerta;
@@ -47,6 +49,7 @@ public class QuizzActivity extends AppCompatActivity {
         mB = findViewById(R.id.txtB);
         mC = findViewById(R.id.txtC);
         mD = findViewById(R.id.txtD);
+        mFinalizaQuizz = findViewById(R.id.btnFinalizarQuizz);
         mButonA = findViewById(R.id.buttonA);
         mButonB = findViewById(R.id.buttonB);
         mButonC = findViewById(R.id.buttonC);
@@ -140,6 +143,19 @@ public class QuizzActivity extends AppCompatActivity {
                 }
             }
         });
+        mFinalizaQuizz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizzActivity.this, FimQuizzActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                String pon = Integer.toString(pontuacao);
+                String acer = Integer.toString(acertos);
+                intent.putExtra("pontos",pon);
+                intent.putExtra("acertos",acer);
+                intent.putExtra("periodo",periodo);
+                startActivity(intent);
+            }
+        });
         //Timer
         times = findViewById(R.id.times);
         timer.start();
@@ -151,6 +167,14 @@ public class QuizzActivity extends AppCompatActivity {
         if (indice_questao>=repositorio.getListaPerguntas().size()){
             //chamo tela de fim
             indice_questao=0;
+            Intent intent = new Intent(QuizzActivity.this, FimQuizzActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            String pon = Integer.toString(pontuacao);
+            String acer = Integer.toString(acertos);
+            intent.putExtra("pontos",pon);
+            intent.putExtra("acertos",acer);
+            intent.putExtra("periodo",periodo);
+            startActivity(intent);
         }
         Perguntas pergunta = repositorio.getListaPerguntas().get(indice_questao);
         respostaCerta = pergunta.getCerta();
