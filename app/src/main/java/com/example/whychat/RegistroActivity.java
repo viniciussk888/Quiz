@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,6 +41,7 @@ public class RegistroActivity extends AppCompatActivity {
     private Button mBtnSeletorFoto;
     private Uri mSelectedUri;
     private ImageView mImgFoto;
+    private ProgressBar mProgressBarReg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class RegistroActivity extends AppCompatActivity {
         mBtnCadastrar = findViewById(R.id.btnCadastrar);
         mBtnSeletorFoto = findViewById(R.id.btnSeletorFoto);
         mImgFoto = findViewById(R.id.imgFoto);
+        mProgressBarReg = findViewById(R.id.progressBarReg);
 
         mBtnSeletorFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +66,7 @@ public class RegistroActivity extends AppCompatActivity {
         mBtnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mProgressBarReg.setVisibility(View.VISIBLE);
                 createUser();
             }
         });
@@ -102,21 +106,23 @@ public class RegistroActivity extends AppCompatActivity {
             return;
         }
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,senha)
-           .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-               @Override
-               public void onComplete(@NonNull Task<AuthResult> task) {
-                   if (task.isSuccessful()) {
-                       Log.i("teste", task.getResult().getUser().getUid());
-                       saveUserInFirebase();
-                   }
-               }
-           })
-           .addOnFailureListener(new OnFailureListener() {
-               @Override
-               public void onFailure(@NonNull Exception e) {
-                   Log.i("teste", e.getMessage());
-               }
-           });
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.i("teste", task.getResult().getUser().getUid());
+                            saveUserInFirebase();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i("teste", e.getMessage());
+                        mProgressBarReg.setVisibility(View.INVISIBLE);
+                        Toast.makeText(RegistroActivity.this, "Erro ao criar Usuario, verifique conexao ou seus dados!", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void saveUserInFirebase() {
@@ -136,7 +142,7 @@ public class RegistroActivity extends AppCompatActivity {
                                 String fotoperfil = uri.toString();
                                 int score = 0;
 
-                               User user =  new User(uid, username, fotoperfil, score);//aqui foi mexido
+                                User user =  new User(uid, username, fotoperfil, score);//aqui foi mexido
 
                                 FirebaseFirestore.getInstance().collection("users")
                                         .add(user)

@@ -1,5 +1,6 @@
 package com.example.whychat;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -44,11 +45,16 @@ public class MensagensActivity extends AppCompatActivity {
     private TextView mMeuScore;
     private ImageView mMinhaFoto;
     private DatabaseReference mDatabase;
+    static BancoDados db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensagens);
+
+
+        db = Room.databaseBuilder(getApplicationContext(),
+                BancoDados.class, "questao").allowMainThreadQueries().build();
 
         verificarAutenticacao();
         inserirUser();
@@ -88,14 +94,19 @@ public class MensagensActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                               Log.d("resultado", FirebaseAuth.getInstance().getUid() + " => " + document.get("uuid"));
-                              if(uuid.equals(document.get("uuid"))) {
-                                  mMeuNome.setText(document.get("username").toString());
-                                  mMeuScore.setText("Score: "+document.get("score").toString());
-                                  String url = document.get("profileUrl").toString();
-                                  Picasso.get()
-                                          .load(url)
-                                          .into(mMinhaFoto);
+                              try {
+                                  if(uuid.equals(document.get("uuid"))) {
+                                      mMeuNome.setText(document.get("username").toString());
+                                      mMeuScore.setText("Score: "+document.get("score").toString());
+                                      String url = document.get("profileUrl").toString();
+                                      Picasso.get()
+                                              .load(url)
+                                              .into(mMinhaFoto);
 
+                                  }
+
+                              }catch (Exception e){
+                                  Log.d("Vini",e.getMessage());
                               }
                             }
                         } else {

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mBtnLogin;
     private TextView mTxtcriarConta;
     private ImageView mLogo;
+    private ProgressBar mProgressBarMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         mBtnLogin = findViewById(R.id.btnCadastrar);
         mTxtcriarConta = findViewById(R.id.txtCriarConta);
         mLogo = findViewById(R.id.logo);
+        mProgressBarMain = findViewById(R.id.progressBarMain);
+
 
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
                String senha = mEditSenha.getText().toString();
                 Log.i("teste",email);
                 Log.i("teste",senha);
+                mProgressBarMain.setVisibility(View.VISIBLE);
 
                 if(email == null || email.isEmpty() || senha == null || senha.isEmpty()){
                     Toast.makeText(MainActivity.this,"Email e Senha devem ser preenchidos!",Toast.LENGTH_LONG).show();
+                    mProgressBarMain.setVisibility(View.INVISIBLE);
                     return;
                 }
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha)
@@ -64,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.i("teste", e.getMessage());
+                               // Log.i("teste", e.getMessage());
+                               // mProgressBarMain.setVisibility(View.INVISIBLE);
+                                Toast.makeText(MainActivity.this, "Erro ao se Conectar, Verifique internet ou seus dados!", Toast.LENGTH_SHORT).show();
                             }
                         });
 

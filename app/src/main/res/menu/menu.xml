@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
   <item
       android:id="@+id/quizz"
-      android:title="quizz"
+      android:title="Historico"
       app:showAsAction="always" />
   <item
       android:id="@+id/rank"
