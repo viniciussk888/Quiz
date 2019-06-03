@@ -45,16 +45,11 @@ public class MensagensActivity extends AppCompatActivity {
     private TextView mMeuScore;
     private ImageView mMinhaFoto;
     private DatabaseReference mDatabase;
-    static BancoDados db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensagens);
-
-
-        db = Room.databaseBuilder(getApplicationContext(),
-                BancoDados.class, "questao").allowMainThreadQueries().build();
 
         verificarAutenticacao();
         inserirUser();
@@ -141,7 +136,7 @@ public class MensagensActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.quizz:
-                Intent intente = new Intent(MensagensActivity.this,MensagensActivity.class);
+                Intent intente = new Intent(MensagensActivity.this,HistoricoActicity.class);
                 startActivity(intente);
                 break;
             case  R.id.sair:

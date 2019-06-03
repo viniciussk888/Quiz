@@ -11,16 +11,14 @@ import java.util.List;
 
 
 @Dao
-public interface QuestaoDAO {
-    @Query("SELECT * FROM questao")
-    List<Questao> getAll();
-
-    @Query("SELECT * FROM questao WHERE id IN (:cursoIds)")
-    List<Questao> loadAllByIds(int[] cursoIds);
+public interface HistoricoDAO {
+    @Query("SELECT * FROM Historico")
+    LiveData<List<Historico>> getAll();
 
     @Insert
-    void insertAll(Questao... questao);
+    void insertAll(Historico... historico);
 
     @Delete
-    void delete(Questao questao);
+    void delete(Historico historico);
+
 }

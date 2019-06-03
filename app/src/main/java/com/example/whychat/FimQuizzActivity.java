@@ -1,5 +1,6 @@
 package com.example.whychat;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class FimQuizzActivity extends AppCompatActivity {
+    static BancoDados db;
     private Button mJogarNovamente;
     private Button mVoltarMenu;
     private TextView mQtdAcertos;
@@ -21,11 +23,17 @@ public class FimQuizzActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fim_quizz);
+        //banco
+        db = Room.databaseBuilder(getApplicationContext(),
+                BancoDados.class, "historico").allowMainThreadQueries().build();
+        //buscando itens
         mJogarNovamente = findViewById(R.id.buttonJogaNovaFim);
         mVoltarMenu = findViewById(R.id.buttonVoltarFim);
         mQtdAcertos = findViewById(R.id.Acertos);
         mPontosGanhos = findViewById(R.id.PontosGanhos);
         mPeriodo = findViewById(R.id.txtPeriodoFim);
+
+
         Intent it = getIntent();
         pontos = it.getStringExtra("pontos");
         acertos = it.getStringExtra("acertos");
@@ -34,6 +42,9 @@ public class FimQuizzActivity extends AppCompatActivity {
         mPontosGanhos.setText("Pontos Ganhos: "+pontos);
         mQtdAcertos.setText("Acertos: "+acertos);
         mPeriodo.setText(periodo+" Periodo");
+        
+        //salvando ho Sqllite
+        salvar();
 
         //listerner
         mJogarNovamente.setOnClickListener(new View.OnClickListener() {
@@ -53,5 +64,10 @@ public class FimQuizzActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void salvar() {
+        Historico c = new Historico(pontos,periodo,acertos);
+        db.userDao().insertAll(c);
     }
 }

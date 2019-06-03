@@ -29,7 +29,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/titulo"
+                android:id="@+id/itemPeriodo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -53,7 +53,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titulo"
+                app:layout_constraintTop_toBottomOf="@+id/itemPeriodo"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <TextView
@@ -122,7 +122,7 @@ de multipla escolha !"
                 android:layout_marginEnd="2dp"
                 android:layout_marginRight="2dp"
                 android:text="Ganhe ou perca pontos no seu Score
-por cada questao !"
+por cada historico !"
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView4"
