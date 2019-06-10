@@ -22,6 +22,7 @@ public class QuizzActivity extends AppCompatActivity {
     private TextView mC;
     private TextView mD;
     private TextView mMsgResposta;
+    private TextView mTxtNquestao;
     private Button mButonA;
     private Button mButonB;
     private Button mButonC;
@@ -34,6 +35,7 @@ public class QuizzActivity extends AppCompatActivity {
     public int pontuacao;
     public int acertos;
     private int indice_questao=0;
+    private int questaoAtual=1,questaoTotal;
     CounterClass timer = new CounterClass(30000, 1000);
 
 
@@ -45,6 +47,7 @@ public class QuizzActivity extends AppCompatActivity {
         mtxtPontos = findViewById(R.id.txtPontos);
         mEnunciado = findViewById(R.id.txtEnunciado);
         mMsgResposta = findViewById(R.id.msgAcerto);
+        mTxtNquestao = findViewById(R.id.txtNquestao);
         mA = findViewById(R.id.txtA);
         mB = findViewById(R.id.txtB);
         mC = findViewById(R.id.txtC);
@@ -59,6 +62,8 @@ public class QuizzActivity extends AppCompatActivity {
         periodo = it.getStringExtra("periodo");
         mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
         //logica
+        questaoTotal = repositorio.getListaPerguntas().size();
+        mTxtNquestao.setText(questaoAtual+"/"+questaoTotal);
         Perguntas pergunta = repositorio.getListaPerguntas().get(indice_questao);
         respostaCerta = pergunta.getCerta();
         mEnunciado.setText(pergunta.getEnunciado());
@@ -78,9 +83,9 @@ public class QuizzActivity extends AppCompatActivity {
                     mMsgResposta.setText("ACERTOU! +10");
                     novaPergunta();
                 }else{
-                    pontuacao = pontuacao - 12;
+                    pontuacao = pontuacao - 7;
                     mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
-                    mMsgResposta.setText("ERROU! -12");
+                    mMsgResposta.setText("ERROU! -7");
                     novaPergunta();
                 }
             }
@@ -96,9 +101,9 @@ public class QuizzActivity extends AppCompatActivity {
                     novaPergunta();
 
                 }else{
-                    pontuacao = pontuacao - 12;
+                    pontuacao = pontuacao - 7;
                     mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
-                    mMsgResposta.setText("ERROU! -12");
+                    mMsgResposta.setText("ERROU! -7");
                     novaPergunta();
 
                 }
@@ -116,9 +121,9 @@ public class QuizzActivity extends AppCompatActivity {
                     novaPergunta();
 
                 }else{
-                    pontuacao = pontuacao - 12;
+                    pontuacao = pontuacao - 7;
                     mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
-                    mMsgResposta.setText("ERROU! -12");
+                    mMsgResposta.setText("ERROU! -7");
                     novaPergunta();
 
                 }
@@ -135,9 +140,9 @@ public class QuizzActivity extends AppCompatActivity {
                     novaPergunta();
 
                 }else{
-                    pontuacao = pontuacao - 12;
+                    pontuacao = pontuacao - 7;
                     mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
-                    mMsgResposta.setText("ERROU! -12");
+                    mMsgResposta.setText("ERROU! -7");
                     novaPergunta();
 
                 }
@@ -183,6 +188,8 @@ public class QuizzActivity extends AppCompatActivity {
         mB.setText(pergunta.getB());
         mC.setText(pergunta.getC());
         mD.setText(pergunta.getD());
+        questaoAtual++;
+        mTxtNquestao.setText(questaoAtual+"/"+questaoTotal);
         timer.start();
     }
 
@@ -198,8 +205,10 @@ public class QuizzActivity extends AppCompatActivity {
         @Override
         public void onFinish() {
             times.setText("Tempo Esgotado!");
-            // Intent intent = new Intent(QuizzActivity.this,EscolherPeriodo.class);
-            //startActivity(intent);
+            mButonA.setVisibility(View.INVISIBLE);
+            mButonB.setVisibility(View.INVISIBLE);
+            mButonC.setVisibility(View.INVISIBLE);
+            mButonD.setVisibility(View.INVISIBLE);
 
         }
 
