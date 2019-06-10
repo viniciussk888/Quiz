@@ -10,16 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Titulo"
-        android:textSize="24dp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@android:color/holo_red_dark"/>
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/itemAcertos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="descriçao"
-        android:textSize="20dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"/>
 
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textSize="20dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"/>
 

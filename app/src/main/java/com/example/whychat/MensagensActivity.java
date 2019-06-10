@@ -1,8 +1,10 @@
 package com.example.whychat;
 
 import android.arch.persistence.room.Room;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,10 +43,12 @@ import java.util.Map;
 public class MensagensActivity extends AppCompatActivity {
     private Button mBtnComoFun;
     private Button mBtnPlay;
+    private Button mbtnConfig;
     private TextView mMeuNome;
     private TextView mMeuScore;
     private ImageView mMinhaFoto;
     private DatabaseReference mDatabase;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class MensagensActivity extends AppCompatActivity {
 
         mBtnComoFun = findViewById(R.id.HowTo);
         mBtnPlay = findViewById(R.id.bntPlay);
+        mbtnConfig = findViewById(R.id.btnConfig);
 
 
 
@@ -70,6 +75,15 @@ public class MensagensActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MensagensActivity.this,EscolherPeriodo.class);
+                startActivity(intent);
+            }
+        });
+        mbtnConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MensagensActivity.this,EditarUsuarioActivity.class);
+                intent.putExtra("nome",mMeuNome.getText());
+                intent.putExtra("linkFoto",url);
                 startActivity(intent);
             }
         });
@@ -91,9 +105,11 @@ public class MensagensActivity extends AppCompatActivity {
                               Log.d("resultado", FirebaseAuth.getInstance().getUid() + " => " + document.get("uuid"));
                               try {
                                   if(uuid.equals(document.get("uuid"))) {
-                                      mMeuNome.setText(document.get("username").toString());
+                                     // mMeuNome.setText(document.get("username").toString());
+                                      FirebaseUser nome = FirebaseAuth.getInstance().getCurrentUser();
+                                      mMeuNome.setText(nome.getDisplayName());
                                       mMeuScore.setText("Score: "+document.get("score").toString());
-                                      String url = document.get("profileUrl").toString();
+                                      url = document.get("profileUrl").toString();
                                       Picasso.get()
                                               .load(url)
                                               .into(mMinhaFoto);
@@ -140,8 +156,19 @@ public class MensagensActivity extends AppCompatActivity {
                 startActivity(intente);
                 break;
             case  R.id.sair:
-                FirebaseAuth.getInstance().signOut();
-                verificarAutenticacao();
+                new AlertDialog.Builder(this)
+                        .setTitle("Desconectar Usuario")
+                        .setMessage("Tem certeza que deseja sair?")
+                        .setPositiveButton("Sim",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        FirebaseAuth.getInstance().signOut();
+                                        verificarAutenticacao();
+                                    }
+                                })
+                        .setNegativeButton("Não", null)
+                        .show();
                 break;
         }
         return super.onOptionsItemSelected(item);

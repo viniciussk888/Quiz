@@ -67,10 +67,10 @@ public class QuizzActivity extends AppCompatActivity {
         Perguntas pergunta = repositorio.getListaPerguntas().get(indice_questao);
         respostaCerta = pergunta.getCerta();
         mEnunciado.setText(pergunta.getEnunciado());
-        mA.setText(pergunta.getB());
-        mB.setText(pergunta.getB());
-        mC.setText(pergunta.getC());
-        mD.setText(pergunta.getD());
+        mA.setText("A. "+pergunta.getA());
+        mB.setText("B. "+pergunta.getB());
+        mC.setText("C. "+pergunta.getC());
+        mD.setText("D. "+pergunta.getD());
 
         //LISTERNER
         mButonA.setOnClickListener(new View.OnClickListener() {
@@ -184,10 +184,10 @@ public class QuizzActivity extends AppCompatActivity {
         Perguntas pergunta = repositorio.getListaPerguntas().get(indice_questao);
         respostaCerta = pergunta.getCerta();
         mEnunciado.setText(pergunta.getEnunciado());
-        mA.setText(pergunta.getB());
-        mB.setText(pergunta.getB());
-        mC.setText(pergunta.getC());
-        mD.setText(pergunta.getD());
+        mA.setText("A. "+pergunta.getA());
+        mB.setText("B. "+pergunta.getB());
+        mC.setText("C. "+pergunta.getC());
+        mD.setText("D. "+pergunta.getD());
         questaoAtual++;
         mTxtNquestao.setText(questaoAtual+"/"+questaoTotal);
         timer.start();
