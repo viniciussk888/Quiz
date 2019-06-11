@@ -1,6 +1,7 @@
 package com.example.whychat;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class QuizzActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mtxtPontos = findViewById(R.id.txtPontos);
         mEnunciado = findViewById(R.id.txtEnunciado);
         mMsgResposta = findViewById(R.id.msgAcerto);

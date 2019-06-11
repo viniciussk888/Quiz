@@ -1,6 +1,7 @@
 package com.example.whychat;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ public class EscolherPeriodo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escolher_periodo);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         mBtnPeriodo1 = findViewById(R.id.btnPeriodo1);
         mBtnPeriodo2 = findViewById(R.id.btnPeriodo2);

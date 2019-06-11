@@ -79,7 +79,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Jogar Novamente"
+                android:text="  Jogar Novamente  "
                 android:textStyle="bold"
                 android:textColor="@color/purpuraLara"
                 android:background="@drawable/bg_botao_periodos"
