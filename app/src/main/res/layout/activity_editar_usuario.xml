@@ -103,10 +103,12 @@
                 android:id="@+id/btnDeletarUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/bg_botao_periodos"
                 android:backgroundTint="@android:color/holo_red_dark"
                 android:text=" Deletar usuario! "
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/btnSalvar"
                 app:layout_constraintStart_toStartOf="@+id/btnSalvar"
                 app:layout_constraintTop_toBottomOf="@+id/btnSalvar" />

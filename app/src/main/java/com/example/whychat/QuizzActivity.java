@@ -35,6 +35,7 @@ public class QuizzActivity extends AppCompatActivity {
     public String periodo;
     public int pontuacao;
     public int acertos;
+    String score;
     private int indice_questao=0;
     private int questaoAtual=1,questaoTotal;
     CounterClass timer = new CounterClass(30000, 1000);
@@ -62,6 +63,7 @@ public class QuizzActivity extends AppCompatActivity {
         //Capturando Periodo da intent
         Intent it = getIntent();
         periodo = it.getStringExtra("periodo");
+        score = it.getStringExtra("score");
         mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
         //logica
         questaoTotal = repositorio.getListaPerguntas().size();
@@ -160,6 +162,7 @@ public class QuizzActivity extends AppCompatActivity {
                 intent.putExtra("pontos",pon);
                 intent.putExtra("acertos",acer);
                 intent.putExtra("periodo",periodo);
+                intent.putExtra("score",score);
                 startActivity(intent);
             }
         });
@@ -181,6 +184,7 @@ public class QuizzActivity extends AppCompatActivity {
             intent.putExtra("pontos",pon);
             intent.putExtra("acertos",acer);
             intent.putExtra("periodo",periodo);
+            intent.putExtra("score",score);
             startActivity(intent);
         }
         Perguntas pergunta = repositorio.getListaPerguntas().get(indice_questao);

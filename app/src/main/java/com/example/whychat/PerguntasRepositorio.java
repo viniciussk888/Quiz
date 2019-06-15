@@ -13,8 +13,8 @@ public class PerguntasRepositorio {
                    "SAD-Sistema de Apoio à Decisão",
                    "b","1"));
            add(new Perguntas("Sobre sistemas operacionais é INCORRETO afirmar:",
-                   "O sistema operacional é uma camada de hardware que separa as aplicações do software que elas acessam e fornece serviços que permitem que cada aplicação seja executada com segurança e efetividade.",
-                   "Na maioria dos sistemas operacionais um usuário requisita ao computador que execute uma ação (por exemplo, imprimir um documento), e o sistema operacional gerencia o software e o hardware para produzir o resultado esperado.",
+                   "O sistema operacional é uma camada de hardware que separa as aplicações do software que elas acessam.",
+                   "Na maioria dos sistemas operacionais um usuário requisita ao computador que execute uma ação e o sistema operacional gerencia o software e o hardware para produzir o resultado esperado.",
                    "Um usuário interage com o sistema operacional via uma ou mais aplicações de usuário e, muitas vezes, por meio de uma aplicação especial denominada shell ou interpretador de comandos.",
                    "O software que contém os componentes centrais do sistema operacional chama-se núcleo (kernel).",
                    "a","2"));

@@ -19,7 +19,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class EditarUsuarioActivity extends AppCompatActivity {
     private TextView mNomeUser;
@@ -68,7 +73,7 @@ public class EditarUsuarioActivity extends AppCompatActivity {
     private void deletarUser() {
         new AlertDialog.Builder(this)
                 .setTitle("Deletar Usuario")
-                .setMessage("Tem certeza que DELETAR USUARIO?")
+                .setMessage("Tem certeza que deseja DELETAR USUARIO?")
                 .setPositiveButton("Sim",
                         new DialogInterface.OnClickListener() {
                             @Override
@@ -76,6 +81,8 @@ public class EditarUsuarioActivity extends AppCompatActivity {
                                 try {
                                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                     user.delete();
+                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                    db.collection("users").document(user.getUid()).delete();
                                     Intent intent = new Intent(EditarUsuarioActivity.this, MainActivity.class);
 
                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -116,6 +123,12 @@ public class EditarUsuarioActivity extends AppCompatActivity {
                                                 }
                                             }
                                         });
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                Map<String, Object> update = new HashMap<>();
+                                update.put("username", nome);
+
+                                db.collection("users").document(user.getUid()).set(update, SetOptions.merge());
+
                             }
                         })
                 .setNegativeButton("Não", null)

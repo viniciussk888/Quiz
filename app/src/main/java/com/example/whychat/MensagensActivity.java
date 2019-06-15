@@ -77,6 +77,7 @@ public class MensagensActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MensagensActivity.this,EscolherPeriodo.class);
+                intent.putExtra("score",mMeuScore.getText());
                 startActivity(intent);
             }
         });
@@ -107,10 +108,8 @@ public class MensagensActivity extends AppCompatActivity {
                               Log.d("resultado", FirebaseAuth.getInstance().getUid() + " => " + document.get("uuid"));
                               try {
                                   if(uuid.equals(document.get("uuid"))) {
-                                     // mMeuNome.setText(document.get("username").toString());
-                                      FirebaseUser nome = FirebaseAuth.getInstance().getCurrentUser();
-                                      mMeuNome.setText(nome.getDisplayName());
-                                      mMeuScore.setText("Score: "+document.get("score").toString());
+                                      mMeuNome.setText(document.get("username").toString());
+                                      mMeuScore.setText(document.get("score").toString());
                                       url = document.get("profileUrl").toString();
                                       Picasso.get()
                                               .load(url)

@@ -4,9 +4,20 @@ import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FimQuizzActivity extends AppCompatActivity {
     static BancoDados db;
@@ -18,6 +29,7 @@ public class FimQuizzActivity extends AppCompatActivity {
     String pontos;
     String acertos;
     String periodo;
+    String score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +50,7 @@ public class FimQuizzActivity extends AppCompatActivity {
         pontos = it.getStringExtra("pontos");
         acertos = it.getStringExtra("acertos");
         periodo = it.getStringExtra("periodo");
+        score = it.getStringExtra("score");
 
         mPontosGanhos.setText("Pontos Ganhos: "+pontos);
         mQtdAcertos.setText("Acertos: "+acertos);
@@ -45,6 +58,8 @@ public class FimQuizzActivity extends AppCompatActivity {
         
         //salvando ho Sqllite
         salvar();
+        //salvando score no FireBase
+        salvarScoreFirebase();
 
         //listerner
         mJogarNovamente.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +79,17 @@ public class FimQuizzActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void salvarScoreFirebase() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        int NovoScore = Integer.parseInt(score) + Integer.parseInt(pontos);
+        //enviando
+        Map<String, Object> update = new HashMap<>();
+        update.put("score", NovoScore);
+
+        db.collection("users").document(user.getUid()).set(update, SetOptions.merge());
     }
 
     private void salvar() {

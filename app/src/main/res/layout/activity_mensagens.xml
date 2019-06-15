@@ -24,7 +24,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="score: 10"
+        android:text="0"
         android:textColor="@android:color/holo_red_dark"
         android:textStyle="italic"
         app:layout_constraintStart_toEndOf="@+id/MinhaFoto"
@@ -61,11 +61,13 @@
         android:id="@+id/bntPlay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="2dp"
         android:background="@drawable/bg_botao_redondo"
-        android:textColor="@android:color/white"
         android:text="Jogar !"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/HowTo"
         app:layout_constraintEnd_toEndOf="@+id/lampadaImgView"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/lampadaImgView"
         app:layout_constraintTop_toBottomOf="@+id/lampadaImgView" />
 
@@ -73,11 +75,13 @@
         android:id="@+id/HowTo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/bg_botao_redondo"
         android:text="Como funciona?"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/bntPlay"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/bntPlay"
         app:layout_constraintTop_toBottomOf="@+id/bntPlay" />
 
@@ -102,10 +106,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:background="@drawable/bg_botao_redondo"
+        android:drawableLeft="@android:drawable/ic_menu_preferences"
         android:text="Config "
         android:textColor="@android:color/white"
-        android:drawableLeft="@android:drawable/ic_menu_preferences"
-        android:background="@drawable/bg_botao_redondo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -118,7 +118,7 @@ public class RegistroActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.i("teste", e.getMessage());
+                        Log.i("testeT", e.getMessage());
                         mProgressBarReg.setVisibility(View.INVISIBLE);
                         Toast.makeText(RegistroActivity.this, "Erro ao criar Usuario, verifique conexao ou seus dados!", Toast.LENGTH_SHORT).show();
                     }
@@ -126,7 +126,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void saveUserInFirebase() {
-        String nomeDeArquivo = UUID.randomUUID().toString();
+        String nomeDeArquivo = FirebaseAuth.getInstance().getUid();//UUID.randomUUID().toString();
         final StorageReference ref = FirebaseStorage.getInstance().getReference("/images/"+nomeDeArquivo);
         ref.putFile(mSelectedUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -145,17 +145,16 @@ public class RegistroActivity extends AppCompatActivity {
                                 User user =  new User(uid, username, fotoperfil, score);//aqui foi mexido
 
                                 FirebaseFirestore.getInstance().collection("users")
-                                        .add(user)
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        .document(uid)
+                                        .set(user)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                Log.i("teste",documentReference.getId());
+                                            public void onSuccess(Void aVoid) {
                                                 Intent intent = new Intent(RegistroActivity.this, MensagensActivity.class);
 
                                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
                                                 startActivity(intent);
-
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
