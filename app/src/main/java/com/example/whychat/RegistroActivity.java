@@ -112,6 +112,11 @@ public class RegistroActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.i("teste", task.getResult().getUser().getUid());
                             saveUserInFirebase();
+                        }else{
+                            String resposta = task.getException().toString();
+                            tratarErros(resposta);
+                           // Toast.makeText(RegistroActivity.this, resposta, Toast.LENGTH_SHORT).show();
+                            mProgressBarReg.setVisibility(View.INVISIBLE);
                         }
                     }
                 })
@@ -120,9 +125,23 @@ public class RegistroActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Log.i("testeT", e.getMessage());
                         mProgressBarReg.setVisibility(View.INVISIBLE);
-                        Toast.makeText(RegistroActivity.this, "Erro ao criar Usuario, verifique conexao ou seus dados!", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(RegistroActivity.this, "Erro ao criar Usuario, Verifique conexao ou seus dados!", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void tratarErros(String resposta) {
+        if (resposta.contains("least 6 characters")){
+            Toast.makeText(RegistroActivity.this, "A senha deve ser maior que 6 caracteres!", Toast.LENGTH_SHORT).show();
+        }else if(resposta.contains("address is badly")){
+            Toast.makeText(RegistroActivity.this, "E-mail invalido!", Toast.LENGTH_SHORT).show();
+        }else if(resposta.contains("address is already")){
+            Toast.makeText(RegistroActivity.this, "E-mail já existe cadastrado!", Toast.LENGTH_SHORT).show();
+        }else if(resposta.contains("interrupted connection")){
+            Toast.makeText(RegistroActivity.this, "Sem conexão com a internet!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(RegistroActivity.this, resposta, Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void saveUserInFirebase() {

@@ -59,20 +59,25 @@ public class MainActivity extends AppCompatActivity {
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Log.i("teste", task.getResult().getUser().getUid());
-                                Intent intent = new Intent(MainActivity.this, MensagensActivity.class);
+                                if (task.isSuccessful()) {
+                                    Intent intent = new Intent(MainActivity.this, MensagensActivity.class);
 
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                                startActivity(intent);
+                                    startActivity(intent);
+                                }else{
+                                    String resposta = task.getException().toString();
+                                    mProgressBarMain.setVisibility(View.INVISIBLE);
+                                    tratarErros(resposta);
+                                }
+
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                               // Log.i("teste", e.getMessage());
-                               // mProgressBarMain.setVisibility(View.INVISIBLE);
-                                Toast.makeText(MainActivity.this, "Erro ao se Conectar, Verifique internet ou seus dados!", Toast.LENGTH_SHORT).show();
+                                Log.i("teste", e.getMessage());
+                                //Toast.makeText(MainActivity.this, "Erro ao se Conectar, Verifique internet ou seus dados!", Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -86,5 +91,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void tratarErros(String resposta) {
+        if (resposta.contains("The password is invalid")){
+            Toast.makeText(MainActivity.this, "Senha incorreta!", Toast.LENGTH_SHORT).show();
+        }else if(resposta.contains("is no user record corresponding")){
+            Toast.makeText(MainActivity.this, "E-mail não cadastrado!", Toast.LENGTH_SHORT).show();
+        }else if(resposta.contains("interrupted connection")){
+            Toast.makeText(MainActivity.this, "Sem conexão com a internet!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(MainActivity.this, resposta, Toast.LENGTH_SHORT).show();
+        }
     }
 }
