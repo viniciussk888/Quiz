@@ -1,8 +1,10 @@
 package com.example.whychat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.CountDownTimer;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -47,6 +49,7 @@ public class QuizzActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         mtxtPontos = findViewById(R.id.txtPontos);
         mEnunciado = findViewById(R.id.txtEnunciado);
         mMsgResposta = findViewById(R.id.msgAcerto);
@@ -64,7 +67,7 @@ public class QuizzActivity extends AppCompatActivity {
         Intent it = getIntent();
         periodo = it.getStringExtra("periodo");
         score = it.getStringExtra("score");
-        mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
+        mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
         //logica
         questaoTotal = repositorio.getListaPerguntas().size();
         mTxtNquestao.setText(questaoAtual+"/"+questaoTotal);
@@ -80,15 +83,16 @@ public class QuizzActivity extends AppCompatActivity {
         mButonA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrar();
                 if (respostaCerta.equals("a")){
                     pontuacao = pontuacao +10;
-                    mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
+                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
                     acertos++;
                     mMsgResposta.setText("ACERTOU! +10");
                     novaPergunta();
                 }else{
                     pontuacao = pontuacao - 7;
-                    mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
+                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU! -7");
                     novaPergunta();
                 }
@@ -97,16 +101,17 @@ public class QuizzActivity extends AppCompatActivity {
         mButonB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrar();
                 if (respostaCerta.equals("b")){
                     pontuacao = pontuacao +10;
-                    mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
+                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
                     acertos++;
                     mMsgResposta.setText("ACERTOU! +10");
                     novaPergunta();
 
                 }else{
                     pontuacao = pontuacao - 7;
-                    mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
+                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU! -7");
                     novaPergunta();
 
@@ -117,16 +122,17 @@ public class QuizzActivity extends AppCompatActivity {
         mButonC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrar();
                 if (respostaCerta.equals("c")){
                     pontuacao = pontuacao +10;
-                    mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
+                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
                     acertos++;
                     mMsgResposta.setText("ACERTOU! +10");
                     novaPergunta();
 
                 }else{
                     pontuacao = pontuacao - 7;
-                    mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
+                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU! -7");
                     novaPergunta();
 
@@ -136,16 +142,17 @@ public class QuizzActivity extends AppCompatActivity {
         mButonD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrar();
                 if (respostaCerta.equals("d")){
                     pontuacao = pontuacao +10;
-                    mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
+                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
                     acertos++;
                     mMsgResposta.setText("ACERTOU! +10");
                     novaPergunta();
 
                 }else{
                     pontuacao = pontuacao - 7;
-                    mtxtPontos.setText(periodo+"P Pontos: "+pontuacao);
+                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU! -7");
                     novaPergunta();
 
@@ -169,6 +176,12 @@ public class QuizzActivity extends AppCompatActivity {
         //Timer
         times = findViewById(R.id.times);
         timer.start();
+    }
+
+    private void vibrar() {
+        Vibrator rr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        long milliseconds = 50;//'30' é o tempo em milissegundos, é basicamente o tempo de duração da vibração. portanto, quanto maior este numero, mais tempo de vibração você irá ter
+        rr.vibrate(milliseconds);
     }
 
     private void novaPergunta() {

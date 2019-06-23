@@ -1,6 +1,7 @@
 package com.example.whychat;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -47,6 +48,7 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         mEditnome = findViewById(R.id.editNome);
         mEditEmail = findViewById(R.id.editEmail);
@@ -103,6 +105,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         if(email == null || email.isEmpty() || senha == null || senha.isEmpty() || nome == null || nome.isEmpty()){
             Toast.makeText(this,"Nome, Email e Senha devem ser preenchidos!",Toast.LENGTH_LONG).show();
+            mProgressBarReg.setVisibility(View.INVISIBLE);
             return;
         }
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,senha)

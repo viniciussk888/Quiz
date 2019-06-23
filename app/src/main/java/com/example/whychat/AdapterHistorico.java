@@ -51,8 +51,8 @@ public class AdapterHistorico extends BaseAdapter {
                 view.findViewById(R.id.itemAcertos);
 
         acertos.setText("Quantidade Acertos: "+historico.getAcertos());
-        pontos.setText("Pontos ganhos: "+historico.getPontuacao());
-        periodo.setText(historico.getPeriodo()+" Periodo");
+        pontos.setText("Pontuação: "+historico.getPontuacao());
+        periodo.setText(historico.getPeriodo());
 
         return view;
     }

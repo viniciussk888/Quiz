@@ -2,6 +2,7 @@ package com.example.whychat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +39,8 @@ public class EditarUsuarioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_usuario);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         mbtnSalvar = findViewById(R.id.btnSalvar);
         mbtnDeletarUser = findViewById(R.id.btnDeletarUser);
         mNomeUser = findViewById(R.id.txtNomeUser);
