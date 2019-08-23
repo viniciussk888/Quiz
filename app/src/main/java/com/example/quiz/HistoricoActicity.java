@@ -1,4 +1,4 @@
-package com.example.whychat;
+package com.example.quiz;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import static com.example.whychat.FimQuizzActivity.db;
+import static com.example.quiz.FimQuizzActivity.db;
 
 public class HistoricoActicity extends AppCompatActivity {
     private Button btnLimpar;

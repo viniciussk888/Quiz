@@ -1,4 +1,4 @@
-package com.example.whychat;
+package com.example.quiz;
 
 public class User {
     private String uuid;

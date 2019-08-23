@@ -1,4 +1,4 @@
-package com.example.whychat;
+package com.example.quiz;
 
 import android.app.Activity;
 import android.view.View;
@@ -6,9 +6,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class AdapterHistorico extends BaseAdapter {

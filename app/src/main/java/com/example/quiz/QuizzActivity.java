@@ -1,4 +1,4 @@
-package com.example.whychat;
+package com.example.quiz;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class QuizzActivity extends AppCompatActivity {

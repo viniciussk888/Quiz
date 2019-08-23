@@ -1,4 +1,4 @@
-package com.example.whychat;
+package com.example.quiz;
 
 import java.util.ArrayList;
 import java.util.List;

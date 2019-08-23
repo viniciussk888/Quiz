@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.whychat">
+    package="com.example.quiz">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
@@ -12,53 +12,53 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditarUsuarioActivity"
+        <activity android:name="com.example.quiz.EditarUsuarioActivity"
                   android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MensagensActivity" />
+                android:value="com.example.quiz.MensagensActivity" />
         </activity>
         <activity
-            android:name=".FimQuizzActivity"
+            android:name="com.example.quiz.FimQuizzActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".HistoricoActicity" />
+        <activity android:name="com.example.quiz.HistoricoActicity" />
         <activity
-            android:name=".QuizzActivity"
+            android:name="com.example.quiz.QuizzActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FimQuizzActivity" />
+                android:value="com.example.quiz.FimQuizzActivity" />
         </activity>
         <activity
-            android:name=".EscolherPeriodo"
+            android:name="com.example.quiz.EscolherPeriodo"
             android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MensagensActivity" />
+                android:value="com.example.quiz.MensagensActivity" />
         </activity>
         <activity
-            android:name=".ComoFuncionaActivity"
+            android:name="com.example.quiz.ComoFuncionaActivity"
             android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MensagensActivity" />
+                android:value="com.example.quiz.MensagensActivity" />
         </activity>
         <activity
-            android:name=".ContatoActivity"
+            android:name="com.example.quiz.ContatoActivity"
             android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MensagensActivity" />
+                android:value="com.example.quiz.MensagensActivity" />
         </activity>
-        <activity android:name=".MensagensActivity">
+        <activity android:name="com.example.quiz.MensagensActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistroActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.example.quiz.RegistroActivity" />
+        <activity android:name="com.example.quiz.MainActivity" />
     </application>
 
 </manifest>
