@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QuizSI</string>
+    <string name="app_name">AVI Quiz</string>
     <string name="email_mensagem">Email</string>
     <string name="senha_mensagem">Senha</string>
     <string name="botao_login">Logar</string>
