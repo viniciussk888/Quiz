@@ -3,4 +3,12 @@
     <string name="email_mensagem">Email</string>
     <string name="senha_mensagem">Senha</string>
     <string name="botao_login">Logar</string>
+    <string-array name="lista_curso">
+        <item>Sistemas de Informação</item>
+        <item>Direito</item>
+        <item>Ciencias Contabeis</item>
+        <item>Agronegocio</item>
+        <item>Pedagogia</item>
+
+    </string-array>
 </resources>

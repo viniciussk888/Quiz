@@ -12,10 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +33,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
+import static java.security.AccessController.getContext;
+
 public class RegistroActivity extends AppCompatActivity {
 
     private EditText mEditEmail;
@@ -41,6 +45,9 @@ public class RegistroActivity extends AppCompatActivity {
     private Uri mSelectedUri;
     private ImageView mImgFoto;
     private ProgressBar mProgressBarReg;
+    private EditText mRepetSenha;
+    private EditText mCodAluno;
+    private Spinner mSpinCurso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,11 @@ public class RegistroActivity extends AppCompatActivity {
         mBtnSeletorFoto = findViewById(R.id.btnSeletorFoto);
         mImgFoto = findViewById(R.id.imgFoto);
         mProgressBarReg = findViewById(R.id.progressBarReg);
+        mRepetSenha = findViewById(R.id.editRepeatSenha);
+        mCodAluno = findViewById(R.id.editCodAluno);
+        mSpinCurso = (Spinner) findViewById(R.id.spinCurso);
+
+
 
         mBtnSeletorFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,9 +112,17 @@ public class RegistroActivity extends AppCompatActivity {
         String email = mEditEmail.getText().toString();
         String senha = mEditSenha.getText().toString();
         String nome = mEditnome.getText().toString();
+        String RepetirSenha = mRepetSenha.getText().toString();
+        String codAluno = mCodAluno.getText().toString();
+        //String curso = mSpinCurso.getSelectedItem().toString();
 
-        if(email == null || email.isEmpty() || senha == null || senha.isEmpty() || nome == null || nome.isEmpty()){
-            Toast.makeText(this,"Nome, Email e Senha devem ser preenchidos!",Toast.LENGTH_LONG).show();
+        if(codAluno == null || codAluno.isEmpty() || email == null || email.isEmpty() || senha == null || senha.isEmpty() || nome == null || nome.isEmpty()){
+            Toast.makeText(this,"Todos os campos devem ser preenchidos!",Toast.LENGTH_LONG).show();
+            mProgressBarReg.setVisibility(View.INVISIBLE);
+            return;
+        }
+        if(senha != RepetirSenha){
+            Toast.makeText(this,"As senhas não conferem!",Toast.LENGTH_LONG).show();
             mProgressBarReg.setVisibility(View.INVISIBLE);
             return;
         }
