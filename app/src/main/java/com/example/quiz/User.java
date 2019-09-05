@@ -5,10 +5,34 @@ public class User {
     private String username;
     private String profileUrl;
     private int score;
+    private String codAluno;
+    private String curso;
 
     public User() {
     }
+    public User(String uuid, String username, String profileUrl, int score, String codAluno, String curso) {
+        this.uuid = uuid;
+        this.username = username;
+        this.profileUrl = profileUrl;
+        this.score = score;
+        this.codAluno = codAluno;
+        this.curso = curso;
+    }
+    public void setCodAluno(String codAluno) {
+        this.codAluno = codAluno;
+    }
 
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getCodAluno() {
+        return codAluno;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
@@ -23,13 +47,6 @@ public class User {
     }
 
     public void setScore(int score) {
-        this.score = score;
-    }
-
-    public User(String uuid, String username, String profileUrl, int score) {
-        this.uuid = uuid;
-        this.username = username;
-        this.profileUrl = profileUrl;
         this.score = score;
     }
 

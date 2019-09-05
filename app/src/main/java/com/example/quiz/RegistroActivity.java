@@ -10,6 +10,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -54,6 +56,7 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         mEditnome = findViewById(R.id.editNome);
         mEditEmail = findViewById(R.id.editEmail);
@@ -114,14 +117,14 @@ public class RegistroActivity extends AppCompatActivity {
         String nome = mEditnome.getText().toString();
         String RepetirSenha = mRepetSenha.getText().toString();
         String codAluno = mCodAluno.getText().toString();
-        //String curso = mSpinCurso.getSelectedItem().toString();
+        String curso = mSpinCurso.getSelectedItem().toString();
 
         if(codAluno == null || codAluno.isEmpty() || email == null || email.isEmpty() || senha == null || senha.isEmpty() || nome == null || nome.isEmpty()){
             Toast.makeText(this,"Todos os campos devem ser preenchidos!",Toast.LENGTH_LONG).show();
             mProgressBarReg.setVisibility(View.INVISIBLE);
             return;
         }
-        if(senha != RepetirSenha){
+        if(senha == RepetirSenha){
             Toast.makeText(this,"As senhas não conferem!",Toast.LENGTH_LONG).show();
             mProgressBarReg.setVisibility(View.INVISIBLE);
             return;
@@ -181,8 +184,10 @@ public class RegistroActivity extends AppCompatActivity {
                                 String username = mEditnome.getText().toString();
                                 String fotoperfil = uri.toString();
                                 int score = 0;
+                                String CodAluno = mCodAluno.getText().toString();
+                                String curso = mSpinCurso.getSelectedItem().toString();
 
-                                User user =  new User(uid, username, fotoperfil, score);//aqui foi mexido
+                                User user =  new User(uid, username, fotoperfil, score, CodAluno, curso);//aqui foi mexido
 
                                 FirebaseFirestore.getInstance().collection("users")
                                         .document(uid)
