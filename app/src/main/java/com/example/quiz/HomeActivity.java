@@ -24,7 +24,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
-public class MensagensActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     private Button mBtnComoFun;
     private Button mBtnPlay;
     private Button mbtnConfig;
@@ -52,14 +52,14 @@ public class MensagensActivity extends AppCompatActivity {
         mBtnComoFun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MensagensActivity.this,ComoFuncionaActivity.class);
+                Intent intent = new Intent(HomeActivity.this,ComoFuncionaActivity.class);
                 startActivity(intent);
             }
         });
         mBtnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MensagensActivity.this,EscolherPeriodo.class);
+                Intent intent = new Intent(HomeActivity.this,EscolherPeriodo.class);
                 intent.putExtra("score",mMeuScore.getText());
                 startActivity(intent);
             }
@@ -67,7 +67,7 @@ public class MensagensActivity extends AppCompatActivity {
         mbtnConfig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MensagensActivity.this,EditarUsuarioActivity.class);
+                Intent intent = new Intent(HomeActivity.this,EditarUsuarioActivity.class);
                 intent.putExtra("nome",mMeuNome.getText());
                 intent.putExtra("linkFoto",url);
                 startActivity(intent);
@@ -113,7 +113,7 @@ public class MensagensActivity extends AppCompatActivity {
 
     private void verificarAutenticacao() {
         if(FirebaseAuth.getInstance().getUid() == null){
-            Intent intent = new Intent(MensagensActivity.this, MainActivity.class);
+            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
 
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -132,11 +132,11 @@ public class MensagensActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.rank:
-                Intent intent = new Intent(MensagensActivity.this,ContatoActivity.class);
+                Intent intent = new Intent(HomeActivity.this,ContatoActivity.class);
                 startActivity(intent);
                 break;
             case R.id.quizz:
-                Intent intente = new Intent(MensagensActivity.this,HistoricoActicity.class);
+                Intent intente = new Intent(HomeActivity.this,HistoricoActicity.class);
                 startActivity(intente);
                 break;
             case  R.id.sair:

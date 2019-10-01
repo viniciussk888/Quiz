@@ -22,7 +22,7 @@ public class ComoFuncionaActivity extends AppCompatActivity {
         mJogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ComoFuncionaActivity.this,EscolherPeriodo.class);
+                Intent intent = new Intent(ComoFuncionaActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });

@@ -16,7 +16,7 @@
                   android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quiz.MensagensActivity" />
+                android:value="com.example.quiz.HomeActivity" />
         </activity>
         <activity
             android:name="com.example.quiz.FimQuizzActivity"
@@ -34,23 +34,23 @@
             android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quiz.MensagensActivity" />
+                android:value="com.example.quiz.HomeActivity" />
         </activity>
         <activity
             android:name="com.example.quiz.ComoFuncionaActivity"
             android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quiz.MensagensActivity" />
+                android:value="com.example.quiz.HomeActivity" />
         </activity>
         <activity
             android:name="com.example.quiz.ContatoActivity"
             android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quiz.MensagensActivity" />
+                android:value="com.example.quiz.HomeActivity" />
         </activity>
-        <activity android:name="com.example.quiz.MensagensActivity">
+        <activity android:name="com.example.quiz.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
