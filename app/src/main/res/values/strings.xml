@@ -6,9 +6,12 @@
     <string-array name="lista_curso">
         <item>Sistemas de Informação</item>
         <item>Direito</item>
-        <item>Ciencias Contabeis</item>
-        <item>Agronegocio</item>
+        <item>Ciências Contábeis</item>
+        <item>Agronegócio</item>
         <item>Pedagogia</item>
+        <item>Administração</item>
+        <item>Gestão Comercial</item>
+        <item>Produção Publicitaria</item>
 
     </string-array>
 </resources>
