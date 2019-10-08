@@ -30,7 +30,6 @@ public class QuizzActivity extends AppCompatActivity {
     private TextView mtxtPontos;
     private PerguntasRepositorio repositorio = new PerguntasRepositorio();
     private String respostaCerta;
-    public String periodo;
     public int pontuacao;
     public int acertos;
     String score;
@@ -61,9 +60,8 @@ public class QuizzActivity extends AppCompatActivity {
         mButonD = findViewById(R.id.buttonD);
         //Capturando Periodo da intent
         Intent it = getIntent();
-        periodo = it.getStringExtra("periodo");
         score = it.getStringExtra("score");
-        mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
+        mtxtPontos.setText(" Pontos: "+pontuacao);
         //logica
         questaoTotal = repositorio.getListaPerguntas().size();
         mTxtNquestao.setText(questaoAtual+"/"+questaoTotal);
@@ -82,14 +80,14 @@ public class QuizzActivity extends AppCompatActivity {
                 vibrar();
                 if (respostaCerta.equals("a")){
                     pontuacao = pontuacao +10;
-                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
+                    mtxtPontos.setText(" Pontos: "+pontuacao);
                     acertos++;
-                    mMsgResposta.setText("ACERTOU! +10");
+                   mMsgResposta.setText("ACERTOU!");
                     novaPergunta();
                 }else{
                     pontuacao = pontuacao - 7;
-                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
-                    mMsgResposta.setText("ERROU! -7");
+                    mtxtPontos.setText(" Pontos: "+pontuacao);
+                    mMsgResposta.setText("ERROU!");
                     novaPergunta();
                 }
             }
@@ -100,15 +98,15 @@ public class QuizzActivity extends AppCompatActivity {
                 vibrar();
                 if (respostaCerta.equals("b")){
                     pontuacao = pontuacao +10;
-                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
+                    mtxtPontos.setText(" Pontos: "+pontuacao);
                     acertos++;
-                    mMsgResposta.setText("ACERTOU! +10");
+                    mMsgResposta.setText("ACERTOU!");
                     novaPergunta();
 
                 }else{
                     pontuacao = pontuacao - 7;
-                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
-                    mMsgResposta.setText("ERROU! -7");
+                    mtxtPontos.setText(" Pontos: "+pontuacao);
+                    mMsgResposta.setText("ERROU!");
                     novaPergunta();
 
                 }
@@ -121,15 +119,15 @@ public class QuizzActivity extends AppCompatActivity {
                 vibrar();
                 if (respostaCerta.equals("c")){
                     pontuacao = pontuacao +10;
-                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
+                    mtxtPontos.setText(" Pontos: "+pontuacao);
                     acertos++;
-                    mMsgResposta.setText("ACERTOU! +10");
+                    mMsgResposta.setText("ACERTOU!");
                     novaPergunta();
 
                 }else{
                     pontuacao = pontuacao - 7;
-                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
-                    mMsgResposta.setText("ERROU! -7");
+                    mtxtPontos.setText(" Pontos: "+pontuacao);
+                    mMsgResposta.setText("ERROU!");
                     novaPergunta();
 
                 }
@@ -141,15 +139,15 @@ public class QuizzActivity extends AppCompatActivity {
                 vibrar();
                 if (respostaCerta.equals("d")){
                     pontuacao = pontuacao +10;
-                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
+                    mtxtPontos.setText(" Pontos: "+pontuacao);
                     acertos++;
-                    mMsgResposta.setText("ACERTOU! +10");
+                    mMsgResposta.setText("ACERTOU!");
                     novaPergunta();
 
                 }else{
                     pontuacao = pontuacao - 7;
-                    mtxtPontos.setText(periodo+" Pontos: "+pontuacao);
-                    mMsgResposta.setText("ERROU! -7");
+                    mtxtPontos.setText(" Pontos: "+pontuacao);
+                    mMsgResposta.setText("ERROU!");
                     novaPergunta();
 
                 }
@@ -164,7 +162,6 @@ public class QuizzActivity extends AppCompatActivity {
                 String acer = Integer.toString(acertos);
                 intent.putExtra("pontos",pon);
                 intent.putExtra("acertos",acer);
-                intent.putExtra("periodo",periodo);
                 intent.putExtra("score",score);
                 startActivity(intent);
             }
@@ -192,7 +189,6 @@ public class QuizzActivity extends AppCompatActivity {
             String acer = Integer.toString(acertos);
             intent.putExtra("pontos",pon);
             intent.putExtra("acertos",acer);
-            intent.putExtra("periodo",periodo);
             intent.putExtra("score",score);
             startActivity(intent);
         }

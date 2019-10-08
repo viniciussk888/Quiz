@@ -46,17 +46,16 @@
                 android:id="@+id/Acertos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:text="Acertos: 10"
+                android:textColor="@android:color/white"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtPeriodoFim" />
+                app:layout_constraintEnd_toEndOf="@+id/txtFim"
+                app:layout_constraintStart_toStartOf="@+id/txtFim"
+                app:layout_constraintTop_toBottomOf="@+id/txtFim" />
 
             <TextView
                 android:id="@+id/PontosGanhos"
@@ -64,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Pontos Ganhos: 10"
+                android:textColor="@android:color/white"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/Acertos"
@@ -90,11 +90,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/PontosGanhos" />
 
             <TextView
-                android:id="@+id/txtPeriodoFim"
+                android:id="@+id/txtFim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
                 android:text="TextView"
+                android:textColor="@android:color/white"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageFim"

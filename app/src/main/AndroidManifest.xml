@@ -21,7 +21,6 @@
         <activity
             android:name="com.example.quiz.FimQuizzActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name="com.example.quiz.HistoricoActicity" />
         <activity
             android:name="com.example.quiz.QuizzActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

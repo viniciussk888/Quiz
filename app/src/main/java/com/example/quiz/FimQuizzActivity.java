@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -19,14 +20,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FimQuizzActivity extends AppCompatActivity {
-    static BancoDados db;
     private Button mVoltarMenu;
     private TextView mQtdAcertos;
     private TextView mPontosGanhos;
-    private TextView mPeriodo;
+    private TextView mTxtFim;
+    private ImageView image;
     String pontos;
     String acertos;
-    String periodo;
     String score;
 
     @Override
@@ -35,27 +35,22 @@ public class FimQuizzActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fim_quizz);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //banco
-        db = Room.databaseBuilder(getApplicationContext(),
-                BancoDados.class, "historico").allowMainThreadQueries().build();
+        //salvar historico
         //buscando itens
         mVoltarMenu = findViewById(R.id.buttonVoltarFim);
         mQtdAcertos = findViewById(R.id.Acertos);
         mPontosGanhos = findViewById(R.id.PontosGanhos);
-        mPeriodo = findViewById(R.id.txtPeriodoFim);
+        mTxtFim = findViewById(R.id.txtFim);
 
 
         Intent it = getIntent();
         pontos = it.getStringExtra("pontos");
         acertos = it.getStringExtra("acertos");
-        periodo = it.getStringExtra("periodo");
         score = it.getStringExtra("score");
 
         mPontosGanhos.setText("Pontos Ganhos: "+pontos);
         mQtdAcertos.setText("Acertos: "+acertos);
-        mPeriodo.setText("Dificuldade: "+periodo);
-        
-        //salvando ho Sqllite
-        salvar();
+
         //salvando score no FireBase
         salvarScoreFirebase();
 
@@ -80,10 +75,5 @@ public class FimQuizzActivity extends AppCompatActivity {
         update.put("score", NovoScore);
 
         db.collection("users").document(user.getUid()).set(update, SetOptions.merge());
-    }
-
-    private void salvar() {
-        Historico c = new Historico(pontos,periodo,acertos);
-        db.userDao().insertAll(c);
     }
 }

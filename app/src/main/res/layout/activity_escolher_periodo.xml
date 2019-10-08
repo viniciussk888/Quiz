@@ -38,7 +38,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Escolha seu nivel:"
+                android:text="ESCOLHA SEU CURSO:"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -47,50 +47,19 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btnPeriodo1"
+                android:id="@+id/btnSI"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_botao_periodos"
-                android:text="1º FACIL"
+                android:text="Sistemas de Informação"
                 android:textColor="@color/purpuraLara"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/btnPeriodo2"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-            <Button
-                android:id="@+id/btnPeriodo2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_botao_periodos"
-                android:text="2° MEDIO"
-                android:textColor="@color/purpuraLara"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/btnPeriodo3"
-                app:layout_constraintEnd_toEndOf="@+id/btnPeriodo1"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@+id/btnPeriodo1"
-                app:layout_constraintTop_toBottomOf="@+id/btnPeriodo1" />
-
-            <Button
-                android:id="@+id/btnPeriodo3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="32dp"
-                android:background="@drawable/bg_botao_periodos"
-                android:text="3° DIFICIL"
-                android:textColor="@color/purpuraLara"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/btnPeriodo2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@+id/btnPeriodo2"
-                app:layout_constraintTop_toBottomOf="@+id/btnPeriodo2" />
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>

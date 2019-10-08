@@ -4,14 +4,13 @@ package com.example.quiz;
 
 public class Perguntas {
 
-    public Perguntas(String enunciado, String a, String b, String c, String d, String certa, String periodo) {
+    public Perguntas(String enunciado, String a, String b, String c, String d, String certa) {
         this.enunciado = enunciado;
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
         this.certa = certa;
-        this.periodo = periodo;
     }
 
     private String enunciado;
@@ -20,7 +19,6 @@ public class Perguntas {
     private String c;
     private String d;
     private String certa;
-    private String periodo;
 
 
 
@@ -70,14 +68,6 @@ public class Perguntas {
 
     public void setCerta(String certa) {
         this.certa = certa;
-    }
-
-    public String getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
     }
 
 
