@@ -85,18 +85,22 @@ public class RegistroActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        try {
         if(requestCode==0){
             //verificando a intencao de que pediu
             mSelectedUri = data.getData();
 
             Bitmap bitmap =  null;
-            try {
+
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),mSelectedUri);
                 mImgFoto.setImageDrawable(new BitmapDrawable(bitmap));
                 mBtnSeletorFoto.setAlpha(0);
-            }catch (IOException e){
 
-            }
+        } }catch (IOException e){
+            Intent intent = new Intent(RegistroActivity.this, RegistroActivity.class);
+
+            startActivity(intent);
+
         }
     }
 

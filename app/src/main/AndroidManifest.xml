@@ -43,7 +43,7 @@
                 android:value="com.example.quiz.HomeActivity" />
         </activity>
         <activity
-            android:name="com.example.quiz.ContatoActivity"
+            android:name="com.example.quiz.RankActivity"
             android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

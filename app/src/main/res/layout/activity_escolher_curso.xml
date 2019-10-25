@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EscolherPeriodo">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/CardEscolherP"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        app:cardBackgroundColor="@color/purpuraLara"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="18dp"
+        app:contentPadding="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="ESCOLHA SEU CURSO:"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnSI"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_botao_periodos"
+                android:text="Sistemas de Informação"
+                android:textColor="@color/purpuraLara"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/btnDireito"
+                app:layout_constraintEnd_toEndOf="@+id/textView2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                app:layout_constraintVertical_bias="0.39" />
+
+            <Button
+                android:id="@+id/btnDireito"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_botao_periodos"
+                android:text="Direito"
+                android:textColor="@color/purpuraLara"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/btnAdm"
+                app:layout_constraintEnd_toEndOf="@+id/btnSI"
+                app:layout_constraintHorizontal_bias="0.459"
+                app:layout_constraintStart_toStartOf="@+id/btnSI"
+                app:layout_constraintTop_toBottomOf="@+id/btnSI" />
+
+            <Button
+                android:id="@+id/btnAdm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_botao_periodos"
+                android:text="Administração"
+                android:textColor="@color/purpuraLara"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/btnAgro"
+                app:layout_constraintEnd_toEndOf="@+id/btnDireito"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/btnDireito"
+                app:layout_constraintTop_toBottomOf="@+id/btnDireito" />
+
+            <Button
+                android:id="@+id/btnAgro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_botao_periodos"
+                android:text="Agronegocio"
+                android:textColor="@color/purpuraLara"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/btnPed"
+                app:layout_constraintEnd_toEndOf="@+id/btnAdm"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/btnAdm"
+                app:layout_constraintTop_toBottomOf="@+id/btnAdm" />
+
+            <Button
+                android:id="@+id/btnPed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_botao_periodos"
+                android:text="Pedagogia"
+                android:textColor="@color/purpuraLara"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/btnCont"
+                app:layout_constraintEnd_toEndOf="@+id/btnAgro"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/btnAgro"
+                app:layout_constraintTop_toBottomOf="@+id/btnAgro" />
+
+            <Button
+                android:id="@+id/btnCont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_botao_periodos"
+                android:text="Ciencias Contabeis"
+                android:textColor="@color/purpuraLara"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/btnPb"
+                app:layout_constraintEnd_toEndOf="@+id/btnPed"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/btnPed"
+                app:layout_constraintTop_toBottomOf="@+id/btnPed" />
+
+            <Button
+                android:id="@+id/btnPb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_botao_periodos"
+                android:text="Produção publicitaria"
+                android:textColor="@color/purpuraLara"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/btnGestao"
+                app:layout_constraintEnd_toEndOf="@+id/btnCont"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/btnCont"
+                app:layout_constraintTop_toBottomOf="@+id/btnCont" />
+
+            <Button
+                android:id="@+id/btnGestao"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_botao_periodos"
+                android:text="Gestão Comercial"
+                android:textColor="@color/purpuraLara"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btnPb"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/btnPb"
+                app:layout_constraintTop_toBottomOf="@+id/btnPb" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

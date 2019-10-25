@@ -15,6 +15,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 import com.xwray.groupie.GroupAdapter;
@@ -23,14 +24,14 @@ import com.xwray.groupie.ViewHolder;
 
 import java.util.List;
 
-public class ContatoActivity extends AppCompatActivity {
+public class RankActivity extends AppCompatActivity {
 
     private GroupAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contato);
+        setContentView(R.layout.activity_rank);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         RecyclerView rv = findViewById(R.id.recycler);
@@ -43,7 +44,7 @@ public class ContatoActivity extends AppCompatActivity {
     }
 
     private void buscarUsuarios() {
-        FirebaseFirestore.getInstance().collection("/users")
+        FirebaseFirestore.getInstance().collection("/users").orderBy("score", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {

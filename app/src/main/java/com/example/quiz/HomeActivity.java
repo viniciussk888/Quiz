@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mensagens);
+        setContentView(R.layout.activity_home);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         verificarAutenticacao();
@@ -132,7 +132,7 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.rank:
-                Intent intent = new Intent(HomeActivity.this,ContatoActivity.class);
+                Intent intent = new Intent(HomeActivity.this, RankActivity.class);
                 startActivity(intent);
                 break;
             case R.id.quizz:
