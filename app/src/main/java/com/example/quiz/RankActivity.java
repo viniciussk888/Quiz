@@ -77,8 +77,10 @@ public class RankActivity extends AppCompatActivity {
             TextView txtUserName = viewHolder.itemView.findViewById(R.id.textView);
             ImageView imgFoto = viewHolder.itemView.findViewById(R.id.imageView);
             TextView txtScore = viewHolder.itemView.findViewById(R.id.textViewScore);
+            TextView txtCurso = viewHolder.itemView.findViewById(R.id.textViewCurso);
 
             txtScore.setText("Score: "+user.getScore());
+            txtCurso.setText(user.getCurso());
             txtUserName.setText(user.getUsername());
 
             Picasso.get()

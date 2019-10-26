@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTxtcriarConta;
     private ImageView mLogo;
     private ProgressBar mProgressBarMain;
+    private TextView mResetarSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mTxtcriarConta = findViewById(R.id.txtCriarConta);
         mLogo = findViewById(R.id.logo);
         mProgressBarMain = findViewById(R.id.progressBarMain);
+        mResetarSenha = findViewById(R.id.txtRecuperarSenha);
 
 
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +91,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+                startActivity(intent);
+            }
+        });
+        mResetarSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RecuperaSenhaActivity.class);
                 startActivity(intent);
             }
         });

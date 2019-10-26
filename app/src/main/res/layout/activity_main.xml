@@ -56,14 +56,15 @@
         android:id="@+id/txtCriarConta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Nao tem uma conta? Clique aqui!"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/purpuraLara"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btnCadastrar"
-        app:layout_constraintStart_toStartOf="@+id/btnCadastrar"
-        app:layout_constraintTop_toBottomOf="@+id/btnCadastrar" />
+        app:layout_constraintEnd_toEndOf="@+id/txtRecuperarSenha"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/txtRecuperarSenha"
+        app:layout_constraintTop_toBottomOf="@+id/txtRecuperarSenha" />
 
     <ImageView
         android:id="@+id/logo"
@@ -98,5 +99,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCriarConta"
         tools:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/txtRecuperarSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Recuperar Senha"
+        android:textStyle="bold"
+        android:textColor="@color/purpuraLara"
+        app:layout_constraintEnd_toEndOf="@+id/btnCadastrar"
+        app:layout_constraintStart_toStartOf="@+id/btnCadastrar"
+        app:layout_constraintTop_toBottomOf="@+id/btnCadastrar" />
 
 </android.support.constraint.ConstraintLayout>

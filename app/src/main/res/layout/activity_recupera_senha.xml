@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecuperaSenhaActivity">
+
+    <EditText
+        android:id="@+id/editRSE"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/bg_edittext_redondo"
+        android:ems="10"
+        android:hint="@string/email_mensagem"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:background="#00750A0A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/unlock" />
+
+    <Button
+        android:id="@+id/btnRSE"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/bg_botao_redondo"
+        android:text="Enviar"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/editRSE"
+        app:layout_constraintStart_toStartOf="@+id/editRSE"
+        app:layout_constraintTop_toBottomOf="@+id/editRSE" />
+
+    <TextView
+        android:id="@+id/txtMsgRSE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:textColor="@color/purpuraLara"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/pReset"
+        app:layout_constraintStart_toStartOf="@+id/pReset"
+        app:layout_constraintTop_toBottomOf="@+id/pReset" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Informe o E-mail da sua conta!"
+        android:textStyle="bold"
+        android:textColor="@color/purpuraLara"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+    <ProgressBar
+        android:id="@+id/pReset"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnRSE"
+        app:layout_constraintStart_toStartOf="@+id/btnRSE"
+        app:layout_constraintTop_toBottomOf="@+id/btnRSE"
+        tools:visibility="invisible" />
+
+</android.support.constraint.ConstraintLayout>

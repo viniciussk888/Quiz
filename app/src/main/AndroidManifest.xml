@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.quiz">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -12,52 +12,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.quiz.EditarUsuarioActivity"
-                  android:label="Voltar">
+        <activity android:name=".RecuperaSenhaActivity"></activity>
+        <activity
+            android:name=".EditarUsuarioActivity"
+            android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.quiz.HomeActivity" />
         </activity>
         <activity
-            android:name="com.example.quiz.FimQuizzActivity"
+            android:name=".FimQuizzActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.example.quiz.QuizzActivity"
+            android:name=".QuizzActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.quiz.FimQuizzActivity" />
         </activity>
         <activity
-            android:name="com.example.quiz.EscolherPeriodo"
+            android:name=".EscolherPeriodo"
             android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.quiz.HomeActivity" />
         </activity>
         <activity
-            android:name="com.example.quiz.ComoFuncionaActivity"
+            android:name=".ComoFuncionaActivity"
             android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.quiz.HomeActivity" />
         </activity>
         <activity
-            android:name="com.example.quiz.RankActivity"
+            android:name=".RankActivity"
             android:label="Voltar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.quiz.HomeActivity" />
         </activity>
-        <activity android:name="com.example.quiz.HomeActivity">
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.quiz.RegistroActivity" />
-        <activity android:name="com.example.quiz.MainActivity" />
+        <activity android:name=".RegistroActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

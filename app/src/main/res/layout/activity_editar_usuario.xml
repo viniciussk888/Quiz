@@ -50,14 +50,11 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/bg_edittext_redondo"
                 android:ems="10"
                 android:hint="Novo nome"
                 android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -65,11 +62,11 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:text="Alterar nome de usuario"
                 android:textColor="@android:color/white"
-                android:textStyle="bold"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/txtNomeUser"
                 app:layout_constraintStart_toStartOf="@+id/txtNomeUser"
                 app:layout_constraintTop_toBottomOf="@+id/txtNomeUser" />
@@ -78,40 +75,87 @@
                 android:id="@+id/txtNomeUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:text="Meu Nome"
                 android:textColor="@android:color/white"
-                android:textStyle="bold"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imgUserEdit"
                 app:layout_constraintStart_toStartOf="@+id/imgUserEdit"
                 app:layout_constraintTop_toBottomOf="@+id/imgUserEdit" />
 
             <Button
                 android:id="@+id/btnSalvar"
-                android:layout_width="94dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:background="@drawable/bg_botao_periodos"
-                android:text="Salvar"
+                android:text="Alterar"
                 android:textColor="@color/purpuraLara"
-                app:layout_constraintEnd_toEndOf="@+id/editNome"
-                app:layout_constraintStart_toStartOf="@+id/editNome"
-                app:layout_constraintTop_toBottomOf="@+id/editNome" />
+                app:layout_constraintBottom_toBottomOf="@+id/editNome"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/editNome"
+                app:layout_constraintTop_toTopOf="@+id/editNome"
+                app:layout_constraintVertical_bias="0.625" />
 
             <Button
                 android:id="@+id/btnDeletarUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/bg_botao_periodos"
                 android:backgroundTint="@android:color/holo_red_dark"
                 android:text=" Deletar usuario! "
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/btnSalvar"
-                app:layout_constraintStart_toStartOf="@+id/btnSalvar"
-                app:layout_constraintTop_toBottomOf="@+id/btnSalvar" />
+                app:layout_constraintEnd_toEndOf="@+id/btnAltSenha"
+                app:layout_constraintStart_toStartOf="@+id/btnAltSenha"
+                app:layout_constraintTop_toBottomOf="@+id/btnAltSenha" />
+
+            <EditText
+                android:id="@+id/editAltSenha"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edittext_redondo"
+                android:ems="10"
+                android:hint="Nova Senha"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editNome" />
+
+            <EditText
+                android:id="@+id/editAltSenha2"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/bg_edittext_redondo"
+                android:ems="10"
+                android:hint="Repetir Senha"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toBottomOf="@+id/editAltSenha"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/editAltSenha"
+                app:layout_constraintTop_toTopOf="@+id/editAltSenha" />
+
+            <Button
+                android:id="@+id/btnAltSenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_botao_periodos"
+                android:text=" Alterar Senha "
+                android:textColor="@color/purpuraLara"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editAltSenha" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +31,9 @@ public class EditarUsuarioActivity extends AppCompatActivity {
     private TextView mNomeUser;
     private ImageView mImagemUser;
     private Button mbtnSalvar;
+    private Button mbtnAltSenha;
+    private EditText mEditSenha;
+    private EditText mEditSenha2;
     private Button mbtnDeletarUser;
     private EditText mEditNome;
     private String nome;
@@ -41,10 +45,13 @@ public class EditarUsuarioActivity extends AppCompatActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         mbtnSalvar = findViewById(R.id.btnSalvar);
+        mbtnAltSenha = findViewById(R.id.btnAltSenha);
         mbtnDeletarUser = findViewById(R.id.btnDeletarUser);
         mNomeUser = findViewById(R.id.txtNomeUser);
         mImagemUser = findViewById(R.id.imgUserEdit);
         mEditNome = findViewById(R.id.editNome);
+        mEditSenha = findViewById(R.id.editAltSenha);
+        mEditSenha2 = findViewById(R.id.editAltSenha2);
 
         Intent it = getIntent();
         mNomeUser.setText(it.getStringExtra("nome"));
@@ -62,6 +69,21 @@ public class EditarUsuarioActivity extends AppCompatActivity {
                 confirmarSalvar();
             }
         });
+        mbtnAltSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nome = mEditNome.getText().toString();
+                if(mEditSenha.getText().toString()==null||mEditSenha.getText().toString().isEmpty() || mEditSenha2.getText().toString()==null||mEditSenha2.getText().toString().isEmpty()){
+                    Toast.makeText(EditarUsuarioActivity.this, "Digite as Senhas!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(mEditSenha.getText().toString().equals(mEditSenha2.getText().toString()) == false || mEditSenha.length()<6 || mEditSenha2.length()<6){
+                    Toast.makeText(EditarUsuarioActivity.this, "As Senhas devem ser iguais e acima 6 de caracteres!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                alterarSenha();
+            }
+        });
         mbtnDeletarUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +92,26 @@ public class EditarUsuarioActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void alterarSenha() {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String newPassword = mEditSenha.getText().toString();
+
+            user.updatePassword(newPassword)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(EditarUsuarioActivity.this, "Senha alterada com SUCESSO!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(EditarUsuarioActivity.this, "Erro"+e, Toast.LENGTH_SHORT).show();
+                }
+            });
     }
 
     private void deletarUser() {
