@@ -68,7 +68,7 @@ public class QuizzActivity extends AppCompatActivity {
         questaoTotal = repositorio.getListaPerguntas().size();
         mTxtNquestao.setText(questaoAtual+"/"+questaoTotal);
         Perguntas pergunta = repositorio.getListaPerguntas().get(indice_questao);
-        respostaCerta = pergunta.getCerta();
+        respostaCerta = pergunta.getAltCerta();
         mEnunciado.setText(pergunta.getEnunciado());
         mA.setText("A. "+pergunta.getA());
         mB.setText("B. "+pergunta.getB());
@@ -195,7 +195,7 @@ public class QuizzActivity extends AppCompatActivity {
             startActivity(intent);
         }
         Perguntas pergunta = repositorio.getListaPerguntas().get(indice_questao);
-        respostaCerta = pergunta.getCerta();
+        respostaCerta = pergunta.getAltCerta();
         mEnunciado.setText(pergunta.getEnunciado());
         mA.setText("A. "+pergunta.getA());
         mB.setText("B. "+curso);
