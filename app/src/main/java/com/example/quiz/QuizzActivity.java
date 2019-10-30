@@ -40,6 +40,7 @@ public class QuizzActivity extends AppCompatActivity {
     private TextView mE;
     private TextView mMsgResposta;
     private TextView mTxtNquestao;
+    private TextView mtxtNivel;
     private Button mButonA;
     private Button mButonB;
     private Button mButonC;
@@ -70,6 +71,7 @@ public class QuizzActivity extends AppCompatActivity {
         mEnunciado = findViewById(R.id.txtEnunciado);
         mMsgResposta = findViewById(R.id.msgAcerto);
         mTxtNquestao = findViewById(R.id.txtNquestao);
+        mtxtNivel = findViewById(R.id.txtNivel);
         mA = findViewById(R.id.txtA);
         mB = findViewById(R.id.txtB);
         mC = findViewById(R.id.txtC);
@@ -245,6 +247,7 @@ public class QuizzActivity extends AppCompatActivity {
 
                                 //inserir primeiras perguntas
                                 respostaCerta = getPerguntas.get(indice_questao).getAltCerta();
+                                mtxtNivel.setText("Nivel "+getPerguntas.get(indice_questao).getNivel());
                                 mEnunciado.setText(""+getPerguntas.get(indice_questao).getEnunciado());
                                 mA.setText("A. "+getPerguntas.get(indice_questao).getA());
                                 mB.setText("B. "+getPerguntas.get(indice_questao).getB());
@@ -283,6 +286,7 @@ public class QuizzActivity extends AppCompatActivity {
         }
         Perguntas pergunta = getPerguntas.get(indice_questao);
         respostaCerta = pergunta.getAltCerta();
+        mtxtNivel.setText("Nivel "+getPerguntas.get(indice_questao).getNivel());
         mEnunciado.setText(pergunta.getEnunciado());
         mA.setText("A. "+pergunta.getA());
         mB.setText("B. "+pergunta.getB());

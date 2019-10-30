@@ -105,9 +105,15 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void selecionarFoto() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent,0);
+        try {
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent,0);
+
+        }catch (Exception e){
+            Toast.makeText(this,"Erro ao selecionar a foto!"+e,Toast.LENGTH_LONG).show();
+        }
+
     }
 
     private void createUser() {
