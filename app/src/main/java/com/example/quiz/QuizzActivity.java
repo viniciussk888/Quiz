@@ -5,12 +5,29 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class QuizzActivity extends AppCompatActivity {
@@ -20,23 +37,26 @@ public class QuizzActivity extends AppCompatActivity {
     private TextView mB;
     private TextView mC;
     private TextView mD;
+    private TextView mE;
     private TextView mMsgResposta;
     private TextView mTxtNquestao;
     private Button mButonA;
     private Button mButonB;
     private Button mButonC;
     private Button mButonD;
+    private Button mButonE;
     private Button mFinalizaQuizz;
     private TextView mtxtPontos;
-    private PerguntasRepositorio repositorio = new PerguntasRepositorio();
     private String respostaCerta;
     public int pontuacao;
     public int acertos;
     String score;
     String curso;
     private int indice_questao=0;
-    private int questaoAtual=1,questaoTotal;
+    private int questaoAtual=1,questaoTotal=0;
     CounterClass timer = new CounterClass(30000, 1000);
+
+    public static ArrayList<Perguntas> getPerguntas = new ArrayList<>();
 
 
 
@@ -54,26 +74,31 @@ public class QuizzActivity extends AppCompatActivity {
         mB = findViewById(R.id.txtB);
         mC = findViewById(R.id.txtC);
         mD = findViewById(R.id.txtD);
+        mE = findViewById(R.id.txtE);
         mFinalizaQuizz = findViewById(R.id.btnFinalizarQuizz);
         mButonA = findViewById(R.id.buttonA);
         mButonB = findViewById(R.id.buttonB);
         mButonC = findViewById(R.id.buttonC);
         mButonD = findViewById(R.id.buttonD);
+        mButonE = findViewById(R.id.buttonE);
+        mButonA.setVisibility(View.INVISIBLE);
+        mButonB.setVisibility(View.INVISIBLE);
+        mButonC.setVisibility(View.INVISIBLE);
+        mButonD.setVisibility(View.INVISIBLE);
+        mButonE.setVisibility(View.INVISIBLE);
+
         //Capturando Periodo da intent
         Intent it = getIntent();
         score = it.getStringExtra("score");
         curso = it.getStringExtra("curso");
         mtxtPontos.setText(" Pontos: "+pontuacao);
+
         //logica
-        questaoTotal = repositorio.getListaPerguntas().size();
-        mTxtNquestao.setText(questaoAtual+"/"+questaoTotal);
-        Perguntas pergunta = repositorio.getListaPerguntas().get(indice_questao);
-        respostaCerta = pergunta.getAltCerta();
-        mEnunciado.setText(pergunta.getEnunciado());
-        mA.setText("A. "+pergunta.getA());
-        mB.setText("B. "+pergunta.getB());
-        mC.setText("C. "+pergunta.getC());
-        mD.setText("D. "+pergunta.getD());
+        getPerguntas.clear();
+
+        buscarPerguntas();
+
+
 
         //LISTERNER
         mButonA.setOnClickListener(new View.OnClickListener() {
@@ -84,10 +109,10 @@ public class QuizzActivity extends AppCompatActivity {
                     pontuacao = pontuacao +10;
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     acertos++;
-                   mMsgResposta.setText("ACERTOU!");
+                    mMsgResposta.setText("ACERTOU!");
                     novaPergunta();
                 }else{
-                    pontuacao = pontuacao - 7;
+                    pontuacao = pontuacao - 5;
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU!");
                     novaPergunta();
@@ -106,7 +131,7 @@ public class QuizzActivity extends AppCompatActivity {
                     novaPergunta();
 
                 }else{
-                    pontuacao = pontuacao - 7;
+                    pontuacao = pontuacao - 5;
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU!");
                     novaPergunta();
@@ -127,7 +152,7 @@ public class QuizzActivity extends AppCompatActivity {
                     novaPergunta();
 
                 }else{
-                    pontuacao = pontuacao - 7;
+                    pontuacao = pontuacao - 5;
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU!");
                     novaPergunta();
@@ -147,7 +172,7 @@ public class QuizzActivity extends AppCompatActivity {
                     novaPergunta();
 
                 }else{
-                    pontuacao = pontuacao - 7;
+                    pontuacao = pontuacao - 5;
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU!");
                     novaPergunta();
@@ -155,6 +180,27 @@ public class QuizzActivity extends AppCompatActivity {
                 }
             }
         });
+        mButonE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vibrar();
+                if (respostaCerta.equals("e")){
+                    pontuacao = pontuacao +10;
+                    mtxtPontos.setText(" Pontos: "+pontuacao);
+                    acertos++;
+                    mMsgResposta.setText("ACERTOU!");
+                    novaPergunta();
+
+                }else{
+                    pontuacao = pontuacao - 5;
+                    mtxtPontos.setText(" Pontos: "+pontuacao);
+                    mMsgResposta.setText("ERROU!");
+                    novaPergunta();
+
+                }
+            }
+        });
+
         mFinalizaQuizz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,9 +214,50 @@ public class QuizzActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
         //Timer
         times = findViewById(R.id.times);
         timer.start();
+    }
+
+    private void buscarPerguntas() {
+        FirebaseFirestore.getInstance().collection(curso)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                getPerguntas.add(document.toObject(Perguntas.class));
+                                Collections.shuffle(getPerguntas);
+
+                                questaoTotal = getPerguntas.size();
+                                if(getPerguntas.size() > 0){
+                                    mButonA.setVisibility(View.VISIBLE);
+                                    mButonB.setVisibility(View.VISIBLE);
+                                    mButonC.setVisibility(View.VISIBLE);
+                                    mButonD.setVisibility(View.VISIBLE);
+                                    mButonE.setVisibility(View.VISIBLE);
+                                }
+                                mTxtNquestao.setText(questaoAtual+"|"+questaoTotal);
+
+
+                                //inserir primeiras perguntas
+                                respostaCerta = getPerguntas.get(indice_questao).getAltCerta();
+                                mEnunciado.setText(""+getPerguntas.get(indice_questao).getEnunciado());
+                                mA.setText("A. "+getPerguntas.get(indice_questao).getA());
+                                mB.setText("B. "+getPerguntas.get(indice_questao).getB());
+                                mC.setText("C. "+getPerguntas.get(indice_questao).getC());
+                                mD.setText("D. "+getPerguntas.get(indice_questao).getD());
+                                mE.setText("E. "+getPerguntas.get(indice_questao).getE());
+
+                            }
+                        } else {
+                            Log.d("consulta",task.getException().getMessage());
+                        }
+                    }
+                });
     }
 
     private void vibrar() {
@@ -182,7 +269,7 @@ public class QuizzActivity extends AppCompatActivity {
     private void novaPergunta() {
         indice_questao++;
         //Verificando se ainda tem alguma questao!!
-        if (indice_questao>=repositorio.getListaPerguntas().size()){
+        if (indice_questao>=getPerguntas.size()){
             //chamo tela de fim
             indice_questao=0;
             Intent intent = new Intent(QuizzActivity.this, FimQuizzActivity.class);
@@ -194,13 +281,14 @@ public class QuizzActivity extends AppCompatActivity {
             intent.putExtra("score",score);
             startActivity(intent);
         }
-        Perguntas pergunta = repositorio.getListaPerguntas().get(indice_questao);
+        Perguntas pergunta = getPerguntas.get(indice_questao);
         respostaCerta = pergunta.getAltCerta();
         mEnunciado.setText(pergunta.getEnunciado());
         mA.setText("A. "+pergunta.getA());
-        mB.setText("B. "+curso);
+        mB.setText("B. "+pergunta.getB());
         mC.setText("C. "+pergunta.getC());
         mD.setText("D. "+pergunta.getD());
+        mE.setText("E. "+pergunta.getE());
         questaoAtual++;
         mTxtNquestao.setText(questaoAtual+"/"+questaoTotal);
         timer.start();
@@ -222,6 +310,7 @@ public class QuizzActivity extends AppCompatActivity {
             mButonB.setVisibility(View.INVISIBLE);
             mButonC.setVisibility(View.INVISIBLE);
             mButonD.setVisibility(View.INVISIBLE);
+            mButonE.setVisibility(View.INVISIBLE);
 
         }
 

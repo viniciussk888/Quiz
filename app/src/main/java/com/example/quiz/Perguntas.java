@@ -1,13 +1,32 @@
 package com.example.quiz;
 
 
+import java.util.Date;
 
 public class Perguntas {
 
     public Perguntas() {
+
     }
 
 
+
+
+
+
+    public Perguntas(String enunciado, String a, String b, String c, String d, String e, String altCerta, String nivel, Date postada) {
+        this.enunciado = enunciado;
+        A = a;
+        B = b;
+        C = c;
+        D = d;
+        E = e;
+        this.altCerta = altCerta;
+        this.nivel = nivel;
+        this.postada = postada;
+    }
+    private String enunciado;
+    private String A;
 
     public String getEnunciado() {
         return enunciado;
@@ -18,43 +37,43 @@ public class Perguntas {
     }
 
     public String getA() {
-        return a;
+        return A;
     }
 
     public void setA(String a) {
-        this.a = a;
+        A = a;
     }
 
     public String getB() {
-        return b;
+        return B;
     }
 
     public void setB(String b) {
-        this.b = b;
+        B = b;
     }
 
     public String getC() {
-        return c;
+        return C;
     }
 
     public void setC(String c) {
-        this.c = c;
+        C = c;
     }
 
     public String getD() {
-        return d;
+        return D;
     }
 
     public void setD(String d) {
-        this.d = d;
+        D = d;
     }
 
     public String getE() {
-        return e;
+        return E;
     }
 
     public void setE(String e) {
-        this.e = e;
+        E = e;
     }
 
     public String getAltCerta() {
@@ -73,29 +92,20 @@ public class Perguntas {
         this.nivel = nivel;
     }
 
-    public Perguntas(String enunciado, String a, String b, String c, String d, String e, String altCerta, String nivel) {
-        this.enunciado = enunciado;
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
-        this.e = e;
-        this.altCerta = altCerta;
-        this.nivel = nivel;
+    public Date getPostada() {
+        return postada;
     }
 
-    private String enunciado;
-    private String a;
-    private String b;
-    private String c;
-    private String d;
-    private String e;
+    public void setPostada(Date postada) {
+        this.postada = postada;
+    }
+
+    private String B;
+    private String C;
+    private String D;
+    private String E;
     private String altCerta;
     private String nivel;
-
-
-
-
-
+    private Date postada;
 
 }
