@@ -213,6 +213,8 @@ public class QuizzActivity extends AppCompatActivity {
                 intent.putExtra("pontos",pon);
                 intent.putExtra("acertos",acer);
                 intent.putExtra("score",score);
+                intent.putExtra("curso",curso);
+                pontuacao =0;acertos=0;
                 startActivity(intent);
             }
         });
@@ -282,6 +284,8 @@ public class QuizzActivity extends AppCompatActivity {
             intent.putExtra("pontos",pon);
             intent.putExtra("acertos",acer);
             intent.putExtra("score",score);
+            intent.putExtra("curso",curso);
+            pontuacao =0;acertos=0;
             startActivity(intent);
         }
         Perguntas pergunta = getPerguntas.get(indice_questao);

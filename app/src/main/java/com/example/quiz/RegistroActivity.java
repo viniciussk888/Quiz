@@ -86,17 +86,21 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
-        if(requestCode==0){
-            //verificando a intencao de que pediu
-            mSelectedUri = data.getData();
+            if(requestCode==0){
+                //verificando a intencao de que pediu
+                if(data != null) {
+                    mSelectedUri = data.getData();
 
-            Bitmap bitmap =  null;
+                    Bitmap bitmap = null;
 
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),mSelectedUri);
-                mImgFoto.setImageDrawable(new BitmapDrawable(bitmap));
-                mBtnSeletorFoto.setAlpha(0);
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mSelectedUri);
+                    mImgFoto.setImageDrawable(new BitmapDrawable(bitmap));
+                    mBtnSeletorFoto.setAlpha(0);
+                }else{
+                    selecionarFoto();
+                }
 
-        } }catch (IOException e){
+            } }catch (IOException e){
             Intent intent = new Intent(RegistroActivity.this, RegistroActivity.class);
 
             startActivity(intent);
@@ -144,7 +148,7 @@ public class RegistroActivity extends AppCompatActivity {
                         }else{
                             String resposta = task.getException().toString();
                             tratarErros(resposta);
-                           // Toast.makeText(RegistroActivity.this, resposta, Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(RegistroActivity.this, resposta, Toast.LENGTH_SHORT).show();
                             mProgressBarReg.setVisibility(View.INVISIBLE);
                         }
                     }

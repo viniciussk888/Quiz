@@ -136,8 +136,8 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.quizz:
-               // Intent intente = new Intent(HomeActivity.this,HistoricoActicity.class);
-               // startActivity(intente);
+                Intent intente = new Intent(HomeActivity.this,HistoricoActivity.class);
+                startActivity(intente);
                 break;
             case  R.id.sair:
                 new AlertDialog.Builder(this)

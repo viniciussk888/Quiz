@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecuperaSenhaActivity"></activity>
+        <activity android:name=".HistoricoActivity"></activity>
+        <activity android:name=".RecuperaSenhaActivity" />
         <activity
             android:name=".EditarUsuarioActivity"
             android:label="Voltar">
