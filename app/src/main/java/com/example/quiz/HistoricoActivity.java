@@ -1,5 +1,6 @@
 package com.example.quiz;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,9 +9,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -28,6 +34,7 @@ import java.util.List;
 
 public class HistoricoActivity extends AppCompatActivity {
     private GroupAdapter adapter;
+    private Button mBtnLimpar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +43,35 @@ public class HistoricoActivity extends AppCompatActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         RecyclerView rv = findViewById(R.id.recyclerHist);
+        mBtnLimpar = findViewById(R.id.btnLimpar);
 
         adapter = new GroupAdapter();
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
         buscarHistorico();
+        mBtnLimpar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
+                FirebaseFirestore.getInstance().collection("userHistorico").document(use.getUid()).collection("historico")
+                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            @Override
+                            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+
+                                List<DocumentSnapshot> docs = queryDocumentSnapshots.getDocuments();
+                                for(DocumentSnapshot doc: docs) {
+                                    String id = doc.getId();
+                                    FirebaseFirestore.getInstance().collection("userHistorico").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("historico").document(id).delete();
+                                }
+                                finish();
+
+                            }
+                        });
+
+            }
+
+        });
     }
 
     private void buscarHistorico() {
