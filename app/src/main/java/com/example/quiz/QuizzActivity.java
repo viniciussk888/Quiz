@@ -6,28 +6,22 @@ import android.content.pm.ActivityInfo;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class QuizzActivity extends AppCompatActivity {
@@ -112,11 +106,13 @@ public class QuizzActivity extends AppCompatActivity {
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     acertos++;
                     mMsgResposta.setText("ACERTOU!");
+                    Toast.makeText(QuizzActivity.this,"CORRETO!",Toast.LENGTH_SHORT).show();
                     novaPergunta();
                 }else{
                     pontuacao = pontuacao - 5;
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU!");
+                    Toast.makeText(QuizzActivity.this,"ERROU!",Toast.LENGTH_SHORT).show();
                     novaPergunta();
                 }
             }
@@ -130,12 +126,14 @@ public class QuizzActivity extends AppCompatActivity {
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     acertos++;
                     mMsgResposta.setText("ACERTOU!");
+                    Toast.makeText(QuizzActivity.this,"CORRETO!",Toast.LENGTH_SHORT).show();
                     novaPergunta();
 
                 }else{
                     pontuacao = pontuacao - 5;
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU!");
+                    Toast.makeText(QuizzActivity.this,"ERROU!",Toast.LENGTH_SHORT).show();
                     novaPergunta();
 
                 }
@@ -151,12 +149,14 @@ public class QuizzActivity extends AppCompatActivity {
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     acertos++;
                     mMsgResposta.setText("ACERTOU!");
+                    Toast.makeText(QuizzActivity.this,"CORRETO!",Toast.LENGTH_SHORT).show();
                     novaPergunta();
 
                 }else{
                     pontuacao = pontuacao - 5;
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU!");
+                    Toast.makeText(QuizzActivity.this,"ERROU!",Toast.LENGTH_SHORT).show();
                     novaPergunta();
 
                 }
@@ -171,12 +171,14 @@ public class QuizzActivity extends AppCompatActivity {
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     acertos++;
                     mMsgResposta.setText("ACERTOU!");
+                    Toast.makeText(QuizzActivity.this,"CORRETO!",Toast.LENGTH_SHORT).show();
                     novaPergunta();
 
                 }else{
                     pontuacao = pontuacao - 5;
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU!");
+                    Toast.makeText(QuizzActivity.this,"ERROU!",Toast.LENGTH_SHORT).show();
                     novaPergunta();
 
                 }
@@ -191,12 +193,14 @@ public class QuizzActivity extends AppCompatActivity {
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     acertos++;
                     mMsgResposta.setText("ACERTOU!");
+                    Toast.makeText(QuizzActivity.this,"CORRETO!",Toast.LENGTH_SHORT).show();
                     novaPergunta();
 
                 }else{
                     pontuacao = pontuacao - 5;
                     mtxtPontos.setText(" Pontos: "+pontuacao);
                     mMsgResposta.setText("ERROU!");
+                    Toast.makeText(QuizzActivity.this,"ERROU!",Toast.LENGTH_SHORT).show();
                     novaPergunta();
 
                 }

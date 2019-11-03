@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button mBtnPlay;
     private Button mbtnConfig;
     private TextView mMeuNome;
+    private TextView mTxtMeuCurso;
     private TextView mMeuScore;
     private ImageView mMinhaFoto;
     private DatabaseReference mDatabase;
@@ -46,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         mBtnComoFun = findViewById(R.id.HowTo);
         mBtnPlay = findViewById(R.id.bntPlay);
         mbtnConfig = findViewById(R.id.btnConfig);
+
 
 
 
@@ -78,7 +80,9 @@ public class HomeActivity extends AppCompatActivity {
     private void inserirUser() {
         mMeuScore = findViewById(R.id.MeuScore);
         mMeuNome = findViewById(R.id.MeuNome);
+        mTxtMeuCurso = findViewById(R.id.MyCurso);
         mMinhaFoto = findViewById(R.id.MinhaFoto);//aqui sera inserido a foto e nome e score
+
         final String uuid = FirebaseAuth.getInstance().getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("users")
@@ -88,10 +92,11 @@ public class HomeActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                              Log.d("resultado", FirebaseAuth.getInstance().getUid() + " => " + document.get("uuid"));
+                              //Log.d("resultado", FirebaseAuth.getInstance().getUid() + " => " + document.get("uuid"));
                               try {
                                   if(uuid.equals(document.get("uuid"))) {
                                       mMeuNome.setText(document.get("username").toString());
+                                      mTxtMeuCurso.setText(document.get("curso").toString());
                                       mMeuScore.setText(document.get("score").toString());
                                       url = document.get("profileUrl").toString();
                                       Picasso.get()

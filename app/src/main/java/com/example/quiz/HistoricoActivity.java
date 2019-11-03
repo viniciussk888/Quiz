@@ -30,6 +30,8 @@ import com.xwray.groupie.GroupAdapter;
 import com.xwray.groupie.Item;
 import com.xwray.groupie.ViewHolder;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class HistoricoActivity extends AppCompatActivity {
@@ -64,7 +66,7 @@ public class HistoricoActivity extends AppCompatActivity {
                                     String id = doc.getId();
                                     FirebaseFirestore.getInstance().collection("userHistorico").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("historico").document(id).delete();
                                 }
-                                finish();
+                               // finish();
 
                             }
                         });
@@ -109,8 +111,11 @@ public class HistoricoActivity extends AppCompatActivity {
             TextView txtPontos = viewHolder.itemView.findViewById(R.id.itemPontos);
             TextView txtAcertos = viewHolder.itemView.findViewById(R.id.itemAcertos);
 
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            String dataFormatada = new SimpleDateFormat("yyyy-MM-dd").format(user.getData());
 
-            txtData.setText(user.getData().toString());
+
+            txtData.setText(dataFormatada);
             txtCurso.setText("Curso: "+user.getCurso());
             txtPontos.setText("Pontuação ganha: "+user.getPontos());
             txtAcertos.setText("Qtd Acertos: "+user.getAcertos());

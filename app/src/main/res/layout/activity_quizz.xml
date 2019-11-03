@@ -220,9 +220,23 @@
                 android:text="B"
                 android:textColor="@color/purpuraLara"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/buttonD"
+                app:layout_constraintEnd_toStartOf="@+id/buttonC"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/buttonA"
+                app:layout_constraintTop_toBottomOf="@+id/txtE" />
+
+            <Button
+                android:id="@+id/buttonD"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_botao_periodos"
+                android:text="C"
+                android:textColor="@color/purpuraLara"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/buttonE"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/buttonC"
                 app:layout_constraintTop_toBottomOf="@+id/txtE" />
 
             <Button
@@ -234,21 +248,7 @@
                 android:text="C"
                 android:textColor="@color/purpuraLara"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/buttonE"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/buttonD"
-                app:layout_constraintTop_toBottomOf="@+id/txtE" />
-
-            <Button
-                android:id="@+id/buttonD"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_botao_periodos"
-                android:text="D"
-                android:textColor="@color/purpuraLara"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/buttonC"
+                app:layout_constraintEnd_toStartOf="@+id/buttonD"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/buttonB"
                 app:layout_constraintTop_toBottomOf="@+id/txtE" />
@@ -296,7 +296,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/buttonC"
+                app:layout_constraintStart_toEndOf="@+id/buttonD"
                 app:layout_constraintTop_toBottomOf="@+id/txtE" />
 
             <TextView
