@@ -231,7 +231,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_botao_periodos"
-                android:text="C"
+                android:text="D"
                 android:textColor="@color/purpuraLara"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/buttonE"

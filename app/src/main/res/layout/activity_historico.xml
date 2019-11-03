@@ -42,6 +42,7 @@
                 android:background="@drawable/bg_botao_periodos"
                 android:text="Limpar"
                 android:textColor="@color/purpuraLara"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
