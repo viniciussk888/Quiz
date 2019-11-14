@@ -1,6 +1,5 @@
 package com.example.quiz;
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,12 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,13 +20,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
 import com.xwray.groupie.GroupAdapter;
 import com.xwray.groupie.Item;
 import com.xwray.groupie.ViewHolder;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class HistoricoActivity extends AppCompatActivity {
@@ -45,7 +38,7 @@ public class HistoricoActivity extends AppCompatActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         RecyclerView rv = findViewById(R.id.recyclerHist);
-        mBtnLimpar = findViewById(R.id.btnLimpar);
+        mBtnLimpar = findViewById(R.id.btnHvoltar);
 
         adapter = new GroupAdapter();
         rv.setAdapter(adapter);
@@ -55,21 +48,10 @@ public class HistoricoActivity extends AppCompatActivity {
         mBtnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
-                FirebaseFirestore.getInstance().collection("userHistorico").document(use.getUid()).collection("historico")
-                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                            @Override
-                            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 
-                                List<DocumentSnapshot> docs = queryDocumentSnapshots.getDocuments();
-                                for(DocumentSnapshot doc: docs) {
-                                    String id = doc.getId();
-                                    FirebaseFirestore.getInstance().collection("userHistorico").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("historico").document(id).delete();
-                                }
-                               // finish();
+                               finish();
 
-                            }
-                        });
+
 
             }
 
@@ -78,7 +60,7 @@ public class HistoricoActivity extends AppCompatActivity {
 
     private void buscarHistorico() {
         FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseFirestore.getInstance().collection("userHistorico").document(use.getUid()).collection("historico")
+        FirebaseFirestore.getInstance().collection("userHistorico").document(use.getUid()).collection("historico").orderBy("data",Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {

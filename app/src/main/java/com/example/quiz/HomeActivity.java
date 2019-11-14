@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button mBtnComoFun;
     private Button mBtnPlay;
     private Button mbtnConfig;
+    private Button mBtnPerso;
     private TextView mMeuNome;
     private TextView mTxtMeuCurso;
     private TextView mMeuScore;
@@ -47,10 +49,17 @@ public class HomeActivity extends AppCompatActivity {
         mBtnComoFun = findViewById(R.id.HowTo);
         mBtnPlay = findViewById(R.id.bntPlay);
         mbtnConfig = findViewById(R.id.btnConfig);
+        mBtnPerso = findViewById(R.id.btnPersonalizados);
 
 
 
+        mBtnPerso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this,"EM BREVE...",Toast.LENGTH_SHORT).show();
 
+            }
+        });
         mBtnComoFun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
